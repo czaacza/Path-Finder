@@ -1,9 +1,14 @@
 package pl.jimp.pathfinder;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class GraphLoader {
     String inputFileName;
+    private int numOfRows;
+    private int numOfColumns;
+
 
     public GraphLoader(String inputFileName) {
         this.inputFileName = inputFileName;
@@ -13,12 +18,18 @@ public class GraphLoader {
 
     }
 
-    public void loadGraph(){
+    public void loadGraph() throws FileNotFoundException {
 
-        File file = new File("plik.txt");
-        boolean exists = file.exists();
+        File inputFile = new File(inputFileName);
+        if(!inputFile.exists()){
+            throw new FileNotFoundException("ERROR: Cannot load the graph from " + inputFileName + ". File not found.");
+        }
 
-        System.out.println(file.getAbsolutePath());
+        Scanner scanner = new Scanner(inputFile);
+        numOfRows = scanner.nextInt();
+        numOfColumns = scanner.nextInt();
+
+        System.out.println(numOfRows + ", " + numOfColumns);
 
 
     }

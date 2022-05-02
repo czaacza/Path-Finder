@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1333.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1333.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jimp.pathfinder.MainController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="14.0" prefHeight="73.0" prefWidth="1298.0" text="Graph Path Finder ">
          <font>
@@ -29,7 +28,7 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <TextField layoutX="177.0" layoutY="2.0" prefHeight="30.0" prefWidth="73.0" />
+                              <TextField fx:id="numOfRowsField" layoutX="177.0" layoutY="2.0" prefHeight="30.0" prefWidth="73.0" />
                            </children>
                         </Pane>
                         <Pane>
@@ -39,7 +38,7 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <TextField layoutX="177.0" layoutY="5.0" prefHeight="30.0" prefWidth="73.0" />
+                              <TextField fx:id="numOfColumnsField" layoutX="177.0" layoutY="5.0" prefHeight="30.0" prefWidth="73.0" />
                            </children>
                         </Pane>
                         <Pane>
@@ -49,12 +48,12 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <TextField layoutX="177.0" layoutY="4.0" prefHeight="30.0" prefWidth="73.0" />
+                              <TextField fx:id="minWeightField" layoutX="177.0" layoutY="4.0" prefHeight="30.0" prefWidth="73.0" />
                            </children>
                         </Pane>
                         <Pane>
                            <children>
-                              <TextField layoutX="177.0" layoutY="5.0" prefHeight="30.0" prefWidth="73.0" />
+                              <TextField fx:id="maxWeightField" layoutX="177.0" layoutY="5.0" prefHeight="30.0" prefWidth="73.0" />
                               <Label layoutY="5.0" prefHeight="30.0" prefWidth="151.0" text="Maximal weight">
                                  <font>
                                     <Font size="16.0" />
@@ -62,9 +61,19 @@
                               </Label>
                            </children>
                         </Pane>
+                        <Pane>
+                           <children>
+                              <Label layoutY="4.0" prefHeight="30.0" prefWidth="151.0" text="\% for no connection">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="chanceField" layoutX="177.0" layoutY="2.0" prefHeight="30.0" prefWidth="73.0" />
+                           </children>
+                        </Pane>
                      </children>
                   </VBox>
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="GENERATE GRAPH">
+                  <Button fx:id="generateButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="GENERATE GRAPH">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -77,7 +86,7 @@
                      <children>
                         <Pane prefHeight="46.0" prefWidth="225.0">
                            <children>
-                              <TextField layoutX="99.0" layoutY="6.0" prefHeight="30.0" prefWidth="151.0" />
+                              <TextField fx:id="inputLoadPathField" layoutX="99.0" layoutY="6.0" prefHeight="30.0" prefWidth="151.0" />
                               <Label layoutY="5.0" prefHeight="30.0" prefWidth="151.0" text="Input path">
                                  <font>
                                     <Font size="16.0" />
@@ -85,7 +94,7 @@
                               </Label>
                            </children>
                         </Pane>
-                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="LOAD GRAPH">
+                        <Button fx:id="loadButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="LOAD GRAPH">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -101,10 +110,10 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <TextField layoutX="99.0" layoutY="5.0" prefHeight="30.0" prefWidth="151.0" />
+                              <TextField fx:id="outputSavePathField" layoutX="99.0" layoutY="5.0" prefHeight="30.0" prefWidth="151.0" />
                            </children>
                         </Pane>
-                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="SAVE GRAPH">
+                        <Button fx:id="saveButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="SAVE GRAPH">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -124,7 +133,7 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <TextField layoutX="177.0" layoutY="8.0" prefHeight="30.0" prefWidth="73.0" />
+                              <TextField fx:id="startVertexField" layoutX="177.0" layoutY="8.0" prefHeight="30.0" prefWidth="73.0" />
                            </children>
                         </Pane>
                         <Pane prefHeight="46.0" prefWidth="225.0">
@@ -134,12 +143,12 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <TextField layoutX="177.0" layoutY="8.0" prefHeight="30.0" prefWidth="73.0" />
+                              <TextField fx:id="endVertexField" layoutX="177.0" layoutY="8.0" prefHeight="30.0" prefWidth="73.0" />
                            </children>
                         </Pane>
                      </children>
                   </VBox>
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="SPLIT GRAPH">
+                  <Button fx:id="splitButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="SPLIT GRAPH">
                      <font>
                         <Font size="16.0" />
                      </font>

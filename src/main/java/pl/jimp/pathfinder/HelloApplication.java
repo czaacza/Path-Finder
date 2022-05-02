@@ -5,7 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 
 public class HelloApplication extends Application {
 
@@ -19,7 +22,15 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
+
+        File file = new File("src/main/resources/pl/jimp/pathfinder/data/mygraph");
+
+        URL url = HelloApplication.class.getResource("data/mygraph");
+        System.out.println(url.getPath());
+
+        GraphLoader graphLoader = new GraphLoader("src/main/resources/pl/jimp/pathfinder/data/mygraph");
+        graphLoader.loadGraph();
         launch();
     }
 }

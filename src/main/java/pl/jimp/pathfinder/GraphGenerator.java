@@ -3,11 +3,11 @@ package pl.jimp.pathfinder;
 import java.util.Random;
 
 public class GraphGenerator {
-    int numOfRows;
-    int numOfColumns;
-    double minWeight;
-    double maxWeight;
-    double chance;
+    private int numOfRows;
+    private int numOfColumns;
+    private double minWeight;
+    private double maxWeight;
+    private double chance;
 
     public GraphGenerator(int numOfRows, int numOfColumns, double minWeight, double maxWeight, double chance) {
         this.numOfRows = numOfRows;
