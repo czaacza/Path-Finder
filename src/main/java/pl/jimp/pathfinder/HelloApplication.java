@@ -6,7 +6,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 
@@ -22,7 +21,7 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws Exception {
 
         File file = new File("src/main/resources/pl/jimp/pathfinder/data/mygraph");
 
@@ -30,7 +29,8 @@ public class HelloApplication extends Application {
         System.out.println(url.getPath());
 
         GraphLoader graphLoader = new GraphLoader("src/main/resources/pl/jimp/pathfinder/data/mygraph");
-        graphLoader.loadGraph();
+        Graph graph = graphLoader.loadGraph();
+        System.out.println(graph);
         launch();
     }
 }

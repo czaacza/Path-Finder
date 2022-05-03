@@ -30,9 +30,11 @@ public class GraphGenerator {
             if (i >= numOfColumns * (numOfRows - 1)) {
                 graph.getVertices().get(i).setWeight(2, weight);
                 graph.getVertices().get(i + 1).setWeight(3, weight);
+
             } else if (i % numOfColumns == numOfColumns - 1) {
                 graph.getVertices().get(i).setWeight(1, weight);
                 graph.getVertices().get(i + numOfColumns).setWeight(0, weight);
+
             } else {
                 graph.getVertices().get(i).setWeight(2, weight);
                 graph.getVertices().get(i + 1).setWeight(3, weight);

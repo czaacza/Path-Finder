@@ -17,7 +17,7 @@ public class Graph {
 
     private void createVertices(){
         for(int i = 0; i < numOfRows * numOfColumns; i++){
-            vertices.set(i, new Vertex(i));
+            vertices.add(new Vertex(i));
         }
     }
 
@@ -31,5 +31,13 @@ public class Graph {
 
     public List<Vertex> getVertices() {
         return vertices;
+    }
+
+    @Override
+    public String toString() {
+        return "Graph: " +
+                "numOfRows=" + numOfRows +
+                ", numOfColumns=" + numOfColumns +
+                ", vertices=\n" + vertices;
     }
 }
