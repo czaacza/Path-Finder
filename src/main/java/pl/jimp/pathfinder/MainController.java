@@ -4,8 +4,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 public class MainController {
+
+    Graph graph;
+
+    @FXML
+    private AnchorPane mainPane;
 
     @FXML
     private TextField numOfRowsField;
@@ -46,10 +52,23 @@ public class MainController {
     @FXML
     private Button splitButton;
 
-    public void submitGenerate(ActionEvent event){
-
-
+    public void submitGenerate(ActionEvent event) {
 
     }
+
+    public void submitLoad(ActionEvent event) throws Exception {
+        System.out.println("graphLoader(" + inputLoadPathField.getText() + ")");
+
+       GraphLoader graphLoader = new GraphLoader(inputLoadPathField.getText());
+       InfoLabel info = graphLoader.loadGraph();
+        mainPane.getChildren().add(info);
+            info.showInfoLabel(info);
+            if(!info.isError()){
+                graph = graphLoader.graph;
+                System.out.println(graph);
+            }
+
+    }
+
 
 }

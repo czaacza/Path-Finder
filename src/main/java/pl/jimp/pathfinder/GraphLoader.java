@@ -1,13 +1,13 @@
 package pl.jimp.pathfinder;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class GraphLoader {
     String inputFileName;
     private int numOfRows;
     private int numOfColumns;
+    Graph graph;
 
 
     public GraphLoader(String inputFileName) {
@@ -15,16 +15,17 @@ public class GraphLoader {
     }
 
 
-    public Graph loadGraph() throws Exception {
-
+    public InfoLabel loadGraph() throws Exception {
 
         File inputFile = new File(inputFileName);
         if (!inputFile.exists()) {
-            throw new FileNotFoundException("ERROR: Cannot load the graph from " + inputFileName + ". File not found.");
-        }
+            return new InfoLabel("Cannot load the graph from '" + inputFileName + "'. File not found.", InfoLabelSource.LOAD, true);
+       }
 
-        Scanner scanner = new Scanner(inputFile);
-        Scanner lineNumberScanner = new Scanner(inputFile);
+            Scanner scanner = new Scanner(inputFile);
+            Scanner lineNumberScanner = new Scanner(inputFile);
+
+
         lineNumberScanner.nextLine();
 
         if (scanner.hasNextInt()) {
@@ -38,7 +39,7 @@ public class GraphLoader {
             throw new Exception("ERROR: Wrong file format. Couldn't load number of columns.");
         }
 
-        Graph graph = new Graph(numOfRows, numOfColumns);
+        graph = new Graph(numOfRows, numOfColumns);
 
         int vertexNum = 0;
         System.out.println(numOfRows + ", " + numOfColumns);
@@ -74,20 +75,16 @@ public class GraphLoader {
                     graph.getVertices().get(vertexNum).setWeight(3, weightValue);
                 }
 
-                System.out.print(" " + vertexNum + ", " + checkedVertex + ", " + weightValue);
+
             }
             vertexNum++;
-            System.out.println();
+
         }
-
-
-        System.out.println(vertexNum);
-
 
         scanner.close();
         lineNumberScanner.close();
 
-        return graph;
+        return new InfoLabel("Graph succesfully loaded.", InfoLabelSource.LOAD, false);
     }
 
 }

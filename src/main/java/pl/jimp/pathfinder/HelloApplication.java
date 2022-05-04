@@ -29,8 +29,6 @@ public class HelloApplication extends Application {
         System.out.println(url.getPath());
 
         GraphLoader graphLoader = new GraphLoader("src/main/resources/pl/jimp/pathfinder/data/mygraph");
-        Graph graph = graphLoader.loadGraph();
-        System.out.println(graph);
         launch();
     }
 }
