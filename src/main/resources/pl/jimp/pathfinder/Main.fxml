@@ -157,6 +157,5 @@
             </VBox>
          </children>
       </VBox>
-      <Button layoutX="320.0" layoutY="955.0" mnemonicParsing="false" text="Button" />
    </children>
 </AnchorPane>
