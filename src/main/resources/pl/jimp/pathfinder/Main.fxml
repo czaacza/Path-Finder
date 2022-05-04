@@ -94,14 +94,14 @@
                               </Label>
                            </children>
                         </Pane>
-                        <Button fx:id="loadButton" mnemonicParsing="false" onAction="#submitLoad" prefHeight="50.0" prefWidth="250.0" text="LOAD GRAPH">
+                        <Button fx:id="loadButton" mnemonicParsing="false" onAction="#submitLoad" prefHeight="53.0" prefWidth="250.0" text="LOAD GRAPH">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Button>
                      </children>
                   </VBox>
-                  <VBox spacing="5.0">
+                  <VBox spacing="15.0">
                      <children>
                         <Pane prefHeight="46.0" prefWidth="225.0">
                            <children>
@@ -110,10 +110,10 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="outputSavePathField" layoutX="99.0" layoutY="6.0" prefHeight="30.0" prefWidth="151.0" />
+                              <TextField fx:id="outputSavePathField" layoutX="99.0" layoutY="3.0" prefHeight="30.0" prefWidth="151.0" />
                            </children>
                         </Pane>
-                        <Button fx:id="saveButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="SAVE GRAPH">
+                        <Button fx:id="saveButton" mnemonicParsing="false" onAction="#submitSave" prefHeight="65.0" prefWidth="250.0" text="SAVE GRAPH">
                            <font>
                               <Font size="16.0" />
                            </font>

@@ -60,14 +60,27 @@ public class MainController {
         System.out.println("graphLoader(" + inputLoadPathField.getText() + ")");
 
        GraphLoader graphLoader = new GraphLoader(inputLoadPathField.getText());
-       InfoLabel info = graphLoader.loadGraph();
-        mainPane.getChildren().add(info);
-            info.showInfoLabel(info);
-            if(!info.isError()){
+       InfoLabel loadInfo = graphLoader.loadGraph();
+        mainPane.getChildren().add(loadInfo);
+            loadInfo.showInfoLabel();
+            if(!loadInfo.isError()){
                 graph = graphLoader.graph;
                 System.out.println(graph);
             }
 
+    }
+
+    public void submitSave(){
+        System.out.println("submitSave()");
+        InfoLabel saveInfo = null;
+        if(graph == null){
+            saveInfo = new InfoLabel("Graph not generated. I cannot save it.", InfoLabelSource.SAVE, true);
+        } else {
+            saveInfo = new InfoLabel("Graph successfully saved.", InfoLabelSource.SAVE, false);
+        }
+
+        mainPane.getChildren().add(saveInfo);
+        saveInfo.showInfoLabel();
     }
 
 

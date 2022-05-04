@@ -1,6 +1,7 @@
 package pl.jimp.pathfinder;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class GraphLoader {
@@ -15,28 +16,31 @@ public class GraphLoader {
     }
 
 
-    public InfoLabel loadGraph() throws Exception {
+    public InfoLabel loadGraph() {
 
         File inputFile = new File(inputFileName);
-        if (!inputFile.exists()) {
+
+        Scanner scanner = null;
+        Scanner lineNumberScanner = null;
+
+        try {
+            scanner = new Scanner(inputFile);
+            lineNumberScanner = new Scanner(inputFile);
+        } catch (FileNotFoundException e) {
             return new InfoLabel("Cannot load the graph from '" + inputFileName + "'. File not found.", InfoLabelSource.LOAD, true);
-       }
-
-            Scanner scanner = new Scanner(inputFile);
-            Scanner lineNumberScanner = new Scanner(inputFile);
-
+        }
 
         lineNumberScanner.nextLine();
 
         if (scanner.hasNextInt()) {
             numOfRows = scanner.nextInt();
         } else {
-            throw new Exception("ERROR: Wrong file format. Couldn't load number of rows.");
+            return new InfoLabel("Wrong file format. Couldn't load number of rows.", InfoLabelSource.LOAD, true);
         }
         if (scanner.hasNextInt()) {
             numOfColumns = scanner.nextInt();
         } else {
-            throw new Exception("ERROR: Wrong file format. Couldn't load number of columns.");
+            return new InfoLabel("Wrong file format. Couldn't load number of columns.", InfoLabelSource.LOAD, true);
         }
 
         graph = new Graph(numOfRows, numOfColumns);
@@ -57,8 +61,8 @@ public class GraphLoader {
                 weightString = scanner.next();
 
                 if (weightString.charAt(0) != ':') {
-                    System.out.println("ERROR: Wrong file format. There is no ':' separating vertex and weight numbers in file " + inputFileName + ", line number: " + vertexNum + 2);
-                    System.exit(1);
+                    return new InfoLabel("Wrong file format. There is no ':' separating vertex and weight numbers in '" + inputFileName +"' line no: " + (vertexNum+2),
+                            InfoLabelSource.LOAD, true);
                 }
                 weightValue = Double.parseDouble(weightString.substring(1, weightString.length()));
 

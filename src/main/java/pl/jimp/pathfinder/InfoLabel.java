@@ -19,9 +19,9 @@ public class InfoLabel extends Label {
         this.isError = isError;
     }
 
-    public void showInfoLabel(InfoLabel infoLabel){
+    public void showInfoLabel(){
 
-        FadeTransition fadeInTransition = new FadeTransition(Duration.seconds(3), infoLabel);
+        FadeTransition fadeInTransition = new FadeTransition(Duration.seconds(3), this);
 
         fadeInTransition.setFromValue(1);
         fadeInTransition.setToValue(0);
