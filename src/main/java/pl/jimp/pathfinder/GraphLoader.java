@@ -5,10 +5,10 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class GraphLoader {
-    String inputFileName;
+    private String inputFileName;
     private int numOfRows;
     private int numOfColumns;
-    Graph graph;
+    private Graph graph;
 
 
     public GraphLoader(String inputFileName) {
@@ -17,8 +17,8 @@ public class GraphLoader {
 
 
     public InfoLabel loadGraph() {
-
-        File inputFile = new File(inputFileName);
+        String inputFilePath = "src/main/resources/pl/jimp/pathfinder/data/" + inputFileName;
+        File inputFile = new File(inputFilePath);
 
         Scanner scanner = null;
         Scanner lineNumberScanner = null;
@@ -46,7 +46,6 @@ public class GraphLoader {
         graph = new Graph(numOfRows, numOfColumns);
 
         int vertexNum = 0;
-        System.out.println(numOfRows + ", " + numOfColumns);
 
         while (lineNumberScanner.hasNextLine()) {
 
@@ -91,4 +90,7 @@ public class GraphLoader {
         return new InfoLabel("Graph succesfully loaded.", InfoLabelSource.LOAD, false);
     }
 
+    public Graph getGraph() {
+        return graph;
+    }
 }

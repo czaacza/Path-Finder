@@ -26,4 +26,8 @@ public class Vertex {
     public String toString() {
         return "V."+vertexNumber + " values = [ " + weights + "]\n";
     }
+
+    public List<Double> getWeights() {
+        return weights;
+    }
 }

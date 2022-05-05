@@ -64,23 +64,22 @@ public class MainController {
         mainPane.getChildren().add(loadInfo);
             loadInfo.showInfoLabel();
             if(!loadInfo.isError()){
-                graph = graphLoader.graph;
+                graph = graphLoader.getGraph();
                 System.out.println(graph);
             }
 
     }
 
     public void submitSave(){
+        GraphSaver graphSaver = new GraphSaver(graph, outputSavePathField.getText());
         System.out.println("submitSave()");
         InfoLabel saveInfo = null;
-        if(graph == null){
-            saveInfo = new InfoLabel("Graph not generated. I cannot save it.", InfoLabelSource.SAVE, true);
-        } else {
-            saveInfo = new InfoLabel("Graph successfully saved.", InfoLabelSource.SAVE, false);
-        }
 
-        mainPane.getChildren().add(saveInfo);
-        saveInfo.showInfoLabel();
+        saveInfo = graphSaver.saveGraph();
+
+
+//        mainPane.getChildren().add(saveInfo);
+//        saveInfo.showInfoLabel();
     }
 
 
