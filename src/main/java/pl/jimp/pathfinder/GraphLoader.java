@@ -87,7 +87,7 @@ public class GraphLoader {
         scanner.close();
         lineNumberScanner.close();
 
-        return new InfoLabel("Graph succesfully loaded.", InfoLabelSource.LOAD, false);
+        return new InfoLabel("Graph successfully loaded from " + inputFileName, InfoLabelSource.LOAD, false);
     }
 
     public Graph getGraph() {

@@ -16,7 +16,7 @@ public class GraphSaver {
 
     public InfoLabel saveGraph() {
         if(graph == null){
-            return new InfoLabel("Graph not generated. I cannot save it.", InfoLabelSource.SAVE, true);
+            return new InfoLabel("Graph is not loaded. There is nothing to save.", InfoLabelSource.SAVE, true);
         }
         String outputFilePath = "src/main/resources/pl/jimp/pathfinder/data/" + outputFileName;
         File outputFile = new File(outputFilePath);
@@ -25,12 +25,12 @@ public class GraphSaver {
             try {
                 outputFile.createNewFile();
             } catch (IOException e) {
-                System.out.println("Couldn't create file " + outputFileName);
+                return new InfoLabel("Couldn't create file '" + outputFileName +"'.", InfoLabelSource.SAVE, true);
             }
         }
 
         if (!outputFile.canWrite()) {
-            System.out.println("No permissions to write to file " + outputFileName);
+            return new InfoLabel("No permissions to write to file '" + outputFileName + "'.", InfoLabelSource.SAVE, true);
         }
 
         try {
@@ -44,18 +44,10 @@ public class GraphSaver {
                 for (int weightIndex = 0; weightIndex < 4; weightIndex++) {
                     if (graph.getVertices().get(vertexIndex).getWeights().get(weightIndex) != 0) {
                         switch (weightIndex) {
-                            case 0:
-                                printWriter.print((vertexIndex - graph.getNumOfColumns()) + " :" + graph.getVertices().get(vertexIndex).getWeights().get(0));
-                                break;
-                            case 1:
-                                printWriter.print((vertexIndex + graph.getNumOfColumns()) + " :" + graph.getVertices().get(vertexIndex).getWeights().get(1));
-                                break;
-                            case 2:
-                                printWriter.print((vertexIndex + 1) + " :" + graph.getVertices().get(vertexIndex).getWeights().get(2));
-                                break;
-                            case 3:
-                                printWriter.print((vertexIndex - 1) + " :" + graph.getVertices().get(vertexIndex).getWeights().get(3));
-                                break;
+                            case 0 -> printWriter.print((vertexIndex - graph.getNumOfColumns()) + " :" + graph.getVertices().get(vertexIndex).getWeights().get(0));
+                            case 1 -> printWriter.print((vertexIndex + graph.getNumOfColumns()) + " :" + graph.getVertices().get(vertexIndex).getWeights().get(1));
+                            case 2 -> printWriter.print((vertexIndex + 1) + " :" + graph.getVertices().get(vertexIndex).getWeights().get(2));
+                            case 3 -> printWriter.print((vertexIndex - 1) + " :" + graph.getVertices().get(vertexIndex).getWeights().get(3));
                         }
                         printWriter.print(" ");
                     }
@@ -68,10 +60,10 @@ public class GraphSaver {
             fileWriter.close();
 
         } catch (IOException e) {
-            System.out.println("Couldn't write to file " + outputFileName);
+            return new InfoLabel("Couldn't write to file '" + outputFileName + "'.", InfoLabelSource.SAVE, true);
         }
 
 
-        return null;
+        return new InfoLabel("Graph successfully saved to '" + outputFileName + "'.", InfoLabelSource.SAVE, false);
     }
 }

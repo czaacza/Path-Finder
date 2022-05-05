@@ -72,14 +72,18 @@ public class MainController {
 
     public void submitSave(){
         GraphSaver graphSaver = new GraphSaver(graph, outputSavePathField.getText());
-        System.out.println("submitSave()");
-        InfoLabel saveInfo = null;
 
-        saveInfo = graphSaver.saveGraph();
+        InfoLabel saveInfo = graphSaver.saveGraph();
+        mainPane.getChildren().add(saveInfo);
+
+        saveInfo.showInfoLabel();
+    }
+
+    public void submitSplit(){
+        GraphSplitter graphSplitter = new GraphSplitter(graph, startVertexField.getText(), endVertexField.getText());
+        graphSplitter.splitGraph();
 
 
-//        mainPane.getChildren().add(saveInfo);
-//        saveInfo.showInfoLabel();
     }
 
 
