@@ -20,7 +20,7 @@ public class GraphGenerator {
     public Graph generateGraph() {
         Graph graph = new Graph(numOfRows, numOfColumns);
 
-        for (int i = 0; i < numOfRows * numOfColumns; i++) {
+        for (int i = 0; i < numOfRows * numOfColumns - 1; i++) {
 
             double weight = 0;
             if (chance < randomNumberInRange(0, 100)) {
