@@ -14,7 +14,7 @@ public class InfoLabel extends Label {
         super(text);
         this.layoutY = infoLabelSource.getLayoutY();
 
-        setLayoutX(70);
+        setLayoutX(75);
         setLayoutY(layoutY);
         this.isError = isError;
     }

@@ -15,114 +15,114 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <VBox alignment="CENTER" layoutX="70.0" layoutY="120.0" prefHeight="824.0" prefWidth="281.0" spacing="50.0">
+      <VBox alignment="CENTER" layoutX="72.0" layoutY="100.0" prefHeight="824.0" prefWidth="255.0" spacing="40.0">
          <children>
-            <VBox prefHeight="306.0" prefWidth="269.0" spacing="20.0" style="-fx-border-color: black; -fx-padding: 15; -fx-border-width: 2; -fx-border-radius: 12px;">
+            <VBox alignment="CENTER" prefHeight="360.0" prefWidth="331.0" spacing="15.0" style="-fx-border-color: #222; -fx-padding: 15; -fx-border-width: 2; -fx-border-radius: 12px;">
                <children>
-                  <VBox spacing="10.0">
+                  <VBox spacing="5.0">
                      <children>
-                        <Pane>
+                        <Pane prefHeight="34.0" prefWidth="206.0">
                            <children>
-                              <Label layoutY="4.0" prefHeight="30.0" prefWidth="151.0" text="Number of rows">
+                              <Label layoutY="-1.0" prefHeight="34.0" prefWidth="151.0" text="Number of rows">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="14.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="numOfRowsField" layoutX="177.0" layoutY="3.0" prefHeight="30.0" prefWidth="73.0" />
+                              <TextField fx:id="numOfRowsField" layoutX="151.0" layoutY="2.0" prefHeight="30.0" prefWidth="73.0" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="35.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutY="-2.0" prefHeight="37.0" prefWidth="151.0" text="Number of columns">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="numOfColumnsField" layoutX="151.0" layoutY="3.0" prefHeight="30.0" prefWidth="73.0" />
                            </children>
                         </Pane>
                         <Pane>
                            <children>
-                              <Label layoutY="5.0" prefHeight="30.0" prefWidth="151.0" text="Number of columns">
+                              <Label prefHeight="34.0" prefWidth="151.0" text="Minimal weight">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="14.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="numOfColumnsField" layoutX="177.0" layoutY="3.0" prefHeight="30.0" prefWidth="73.0" />
+                              <TextField fx:id="minWeightField" layoutX="151.0" layoutY="2.0" prefHeight="30.0" prefWidth="73.0" />
                            </children>
                         </Pane>
                         <Pane>
                            <children>
-                              <Label layoutY="4.0" prefHeight="30.0" prefWidth="151.0" text="Minimal weight">
+                              <TextField fx:id="maxWeightField" layoutX="151.0" layoutY="4.0" prefHeight="30.0" prefWidth="73.0" />
+                              <Label layoutY="-2.0" prefHeight="37.0" prefWidth="151.0" text="Maximal weight">
                                  <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="minWeightField" layoutX="177.0" layoutY="3.0" prefHeight="30.0" prefWidth="73.0" />
-                           </children>
-                        </Pane>
-                        <Pane>
-                           <children>
-                              <TextField fx:id="maxWeightField" layoutX="177.0" layoutY="3.0" prefHeight="30.0" prefWidth="73.0" />
-                              <Label layoutY="5.0" prefHeight="30.0" prefWidth="151.0" text="Maximal weight">
-                                 <font>
-                                    <Font size="16.0" />
+                                    <Font size="14.0" />
                                  </font>
                               </Label>
                            </children>
                         </Pane>
                         <Pane>
                            <children>
-                              <Label layoutY="4.0" prefHeight="30.0" prefWidth="151.0" text="\% for no connection">
+                              <Label prefHeight="34.0" prefWidth="151.0" text="\% for no connection">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="14.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="chanceField" layoutX="177.0" layoutY="2.0" prefHeight="30.0" prefWidth="73.0" />
+                              <TextField fx:id="chanceField" layoutX="151.0" layoutY="2.0" prefHeight="30.0" prefWidth="73.0" />
                            </children>
                         </Pane>
                      </children>
                   </VBox>
-                  <Button fx:id="generateButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="GENERATE GRAPH" textOverrun="CLIP">
+                  <Button fx:id="generateButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="41.0" prefWidth="211.0" text="GENERATE GRAPH" textOverrun="CLIP">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="14.0" />
                      </font>
                   </Button>
                </children>
             </VBox>
-            <VBox prefHeight="251.0" prefWidth="282.0" spacing="8.0" style="-fx-padding: 15; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 12px;">
+            <VBox prefHeight="350.0" prefWidth="280.0" spacing="41.0">
                <children>
-                  <VBox prefHeight="121.0" prefWidth="121.0" spacing="5.0">
+                  <VBox prefHeight="121.0" prefWidth="121.0" spacing="5.0" style="-fx-border-color: #333; -fx-border-width: 2; -fx-padding: 15; -fx-border-radius: 12;">
                      <children>
                         <Pane prefHeight="46.0" prefWidth="225.0">
                            <children>
-                              <TextField fx:id="inputLoadPathField" layoutX="99.0" layoutY="5.0" prefHeight="30.0" prefWidth="151.0" />
+                              <TextField fx:id="inputLoadPathField" layoutX="92.0" layoutY="5.0" prefHeight="30.0" prefWidth="135.0" />
                               <Label layoutY="5.0" prefHeight="30.0" prefWidth="151.0" text="Input path">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="14.0" />
                                  </font>
                               </Label>
                            </children>
                         </Pane>
-                        <Button fx:id="loadButton" mnemonicParsing="false" onAction="#submitLoad" prefHeight="45.0" prefWidth="250.0" text="LOAD GRAPH">
+                        <Button fx:id="loadButton" mnemonicParsing="false" onAction="#submitLoad" prefHeight="35.0" prefWidth="221.0" text="LOAD GRAPH">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="14.0" />
                            </font>
                         </Button>
                      </children>
                   </VBox>
-                  <VBox spacing="15.0">
+                  <VBox spacing="15.0" style="-fx-border-color: #333; -fx-border-width: 2; -fx-border-radius: 12; -fx-padding: 15;">
                      <children>
                         <Pane prefHeight="30.0" prefWidth="225.0">
                            <children>
                               <Label layoutY="5.0" prefHeight="30.0" prefWidth="151.0" text="Output path">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="14.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="outputSavePathField" layoutX="99.0" layoutY="3.0" prefHeight="30.0" prefWidth="151.0" />
+                              <TextField fx:id="outputSavePathField" layoutX="86.0" layoutY="1.0" prefHeight="30.0" prefWidth="135.0" />
                            </children>
                         </Pane>
-                        <Button fx:id="saveButton" mnemonicParsing="false" onAction="#submitSave" prefHeight="45.0" prefWidth="249.0" text="SAVE GRAPH">
+                        <Button fx:id="saveButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#submitSave" prefHeight="35.0" prefWidth="221.0" text="SAVE GRAPH">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="14.0" />
                            </font>
                         </Button>
                      </children>
                   </VBox>
                </children>
             </VBox>
-            <VBox spacing="10.0" style="-fx-padding: 15; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 12;">
+            <VBox prefHeight="249.0" prefWidth="255.0" spacing="10.0" style="-fx-padding: 15; -fx-border-color: #333; -fx-border-width: 2; -fx-border-radius: 12;">
                <children>
                   <VBox>
                      <children>
@@ -130,27 +130,27 @@
                            <children>
                               <Label layoutY="5.0" prefHeight="30.0" prefWidth="151.0" text="Start vertex">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="14.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="startVertexField" layoutX="177.0" layoutY="5.0" prefHeight="30.0" prefWidth="73.0" />
+                              <TextField fx:id="startVertexField" layoutX="134.0" layoutY="5.0" prefHeight="30.0" prefWidth="73.0" />
                            </children>
                         </Pane>
                         <Pane prefHeight="46.0" prefWidth="225.0">
                            <children>
                               <Label layoutY="8.0" prefHeight="30.0" prefWidth="151.0" text="End vertex">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="14.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="endVertexField" layoutX="177.0" layoutY="8.0" prefHeight="30.0" prefWidth="73.0" />
+                              <TextField fx:id="endVertexField" layoutX="134.0" layoutY="8.0" prefHeight="30.0" prefWidth="73.0" />
                            </children>
                         </Pane>
                      </children>
                   </VBox>
-                  <Button fx:id="splitButton" mnemonicParsing="false" onAction="#submitSplit" prefHeight="50.0" prefWidth="250.0" text="SPLIT GRAPH">
+                  <Button fx:id="splitButton" mnemonicParsing="false" onAction="#submitSplit" prefHeight="35.0" prefWidth="250.0" text="SPLIT GRAPH">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="14.0" />
                      </font>
                   </Button>
                </children>

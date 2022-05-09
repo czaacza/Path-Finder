@@ -2,9 +2,9 @@ package pl.jimp.pathfinder;
 
 public enum InfoLabelSource {
     GENERATE(415),
-    LOAD(580),
-    SAVE(720),
-    SPLIT(955);
+    LOAD(572),
+    SAVE(730),
+    SPLIT(950);
 
     private int layoutY;
 
