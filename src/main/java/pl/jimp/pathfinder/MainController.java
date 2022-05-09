@@ -3,8 +3,11 @@ package pl.jimp.pathfinder;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+
+import java.util.LinkedList;
 
 public class MainController {
 
@@ -55,8 +58,36 @@ public class MainController {
     @FXML
     private Button splitButton;
 
-    public void submitGenerate(ActionEvent event) {
+    @FXML
+    private Button bfsButton;
 
+    @FXML
+    private Label lblBfs;
+
+    public void submitGenerate(ActionEvent event) {
+        int numOfRows = Integer.parseInt(numOfRowsField.getText());
+        int numOfColumns = Integer.parseInt(numOfColumnsField.getText());
+        double minWeight = Double.parseDouble(minWeightField.getText());
+        double maxWeight = Double.parseDouble(maxWeightField.getText());
+        double chance = Double.parseDouble(chanceField.getText());
+
+        GraphGenerator genGraph = new GraphGenerator(numOfRows, numOfColumns, minWeight, maxWeight, chance);
+        graph = genGraph.generateGraph();
+        System.out.println(graph);
+        GraphDrawer graphDrawer = new GraphDrawer(graphPane, graph);
+        graphDrawer.clearGraph();
+        graphDrawer.drawGraph();
+    }
+
+    public void submitBfs(ActionEvent event) {
+        Bfs bfs = new Bfs(graph);
+        if (bfs.checkIfConnected()) {
+            //lblBfs.setText("");
+            lblBfs.setText("Graph is connected");
+        } else {
+            //lblBfs.setText("");
+            lblBfs.setText("Graph is not connected");
+        }
     }
 
     public void submitLoad(ActionEvent event) throws Exception {
