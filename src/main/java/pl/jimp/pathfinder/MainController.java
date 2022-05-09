@@ -14,6 +14,9 @@ public class MainController {
     private AnchorPane mainPane;
 
     @FXML
+    private AnchorPane graphPane;
+
+    @FXML
     private TextField numOfRowsField;
 
     @FXML
@@ -66,6 +69,9 @@ public class MainController {
             if(!loadInfo.isError()){
                 graph = graphLoader.getGraph();
                 System.out.println(graph);
+                GraphDrawer graphDrawer = new GraphDrawer(graphPane, graph);
+                graphDrawer.clearGraph();
+                graphDrawer.drawGraph();
             }
 
     }
