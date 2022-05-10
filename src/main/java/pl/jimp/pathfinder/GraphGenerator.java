@@ -17,6 +17,29 @@ public class GraphGenerator {
         this.chance = chance;
     }
 
+    public InfoLabel checkGenerateArguments() {
+
+        if (numOfRows <= 0) {
+            return new InfoLabel("Number of rows should be greater than 0", InfoLabelSource.GENERATE, true);
+        }
+        if (numOfColumns <= 0) {
+            return new InfoLabel("Number of columns should be greater than 0", InfoLabelSource.GENERATE, true);
+        }
+        if (minWeight <= 0) {
+            return new InfoLabel("Minimal weight should be greater than 0", InfoLabelSource.GENERATE, true);
+        }
+        if (maxWeight > 1000) {
+            return new InfoLabel("Maximal weight should be less than 1000", InfoLabelSource.GENERATE, true);
+        }
+        if (minWeight > maxWeight) {
+            return new InfoLabel("Minimal weight should NOT be greater than maximal weight", InfoLabelSource.GENERATE, true);
+        }
+        if (chance < 0 || chance > 100) {
+            return new InfoLabel("% for no connection should NOT be less than 0 or greater than 100", InfoLabelSource.GENERATE, true);
+        }
+        return new InfoLabel("Generate arguments are valid", InfoLabelSource.GENERATE, false);
+    }
+
     public Graph generateGraph() {
         Graph graph = new Graph(numOfRows, numOfColumns);
 

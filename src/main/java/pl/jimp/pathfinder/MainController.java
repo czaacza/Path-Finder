@@ -72,7 +72,15 @@ public class MainController {
         double chance = Double.parseDouble(chanceField.getText());
 
         GraphGenerator genGraph = new GraphGenerator(numOfRows, numOfColumns, minWeight, maxWeight, chance);
+
+        InfoLabel generateInfo = genGraph.checkGenerateArguments();
+        mainPane.getChildren().add(generateInfo);
+        if(generateInfo.isError()){
+            generateInfo.showInfoLabel();
+            return;
+        }
         graph = genGraph.generateGraph();
+
         System.out.println(graph);
         GraphDrawer graphDrawer = new GraphDrawer(graphPane, graph);
         graphDrawer.clearGraph();
@@ -81,11 +89,13 @@ public class MainController {
 
     public void submitBfs(ActionEvent event) {
         Bfs bfs = new Bfs(graph);
+        if (graph == null) {
+            lblBfs.setText("Graph is not loaded");
+            return;
+        }
         if (bfs.checkIfConnected()) {
-            //lblBfs.setText("");
             lblBfs.setText("Graph is connected");
         } else {
-            //lblBfs.setText("");
             lblBfs.setText("Graph is not connected");
         }
     }
