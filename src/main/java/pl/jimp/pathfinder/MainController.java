@@ -65,17 +65,28 @@ public class MainController {
     private Label lblBfs;
 
     public void submitGenerate(ActionEvent event) {
-        int numOfRows = Integer.parseInt(numOfRowsField.getText());
-        int numOfColumns = Integer.parseInt(numOfColumnsField.getText());
-        double minWeight = Double.parseDouble(minWeightField.getText());
-        double maxWeight = Double.parseDouble(maxWeightField.getText());
-        double chance = Double.parseDouble(chanceField.getText());
-
+        int numOfRows;
+        int numOfColumns;
+        double minWeight;
+        double maxWeight;
+        double chance;
+        try {
+            numOfRows = Integer.parseInt(numOfRowsField.getText());
+            numOfColumns = Integer.parseInt(numOfColumnsField.getText());
+            minWeight = Double.parseDouble(minWeightField.getText());
+            maxWeight = Double.parseDouble(maxWeightField.getText());
+            chance = Double.parseDouble(chanceField.getText());
+        } catch (NumberFormatException e) {
+            InfoLabel argumentsInfo = new InfoLabel("wrong format of argument(s)", InfoLabelSource.GENERATE, true);
+            mainPane.getChildren().add(argumentsInfo);
+            argumentsInfo.showInfoLabel();
+            return;
+        }
         GraphGenerator genGraph = new GraphGenerator(numOfRows, numOfColumns, minWeight, maxWeight, chance);
 
         InfoLabel generateInfo = genGraph.checkGenerateArguments();
         mainPane.getChildren().add(generateInfo);
-        if(generateInfo.isError()){
+        if (generateInfo.isError()) {
             generateInfo.showInfoLabel();
             return;
         }
