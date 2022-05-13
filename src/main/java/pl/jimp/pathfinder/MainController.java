@@ -18,6 +18,8 @@ public class MainController {
 
     @FXML
     private AnchorPane graphPane;
+    @FXML
+    private AnchorPane edgePane;
 
     @FXML
     private TextField numOfRowsField;
@@ -93,7 +95,7 @@ public class MainController {
         graph = genGraph.generateGraph();
 
         System.out.println(graph);
-        GraphDrawer graphDrawer = new GraphDrawer(graphPane, graph);
+        GraphDrawer graphDrawer = new GraphDrawer(graphPane,edgePane, graph);
         graphDrawer.clearGraph();
         graphDrawer.drawGraph();
     }
@@ -121,7 +123,7 @@ public class MainController {
             if(!loadInfo.isError()){
                 graph = graphLoader.getGraph();
                 System.out.println(graph);
-                GraphDrawer graphDrawer = new GraphDrawer(graphPane, graph);
+                GraphDrawer graphDrawer = new GraphDrawer(graphPane, edgePane, graph);
                 graphDrawer.clearGraph();
                 graphDrawer.drawGraph();
             }

@@ -33,6 +33,21 @@ public class Graph {
         return vertices;
     }
 
+    public int getIndexOfTheVertex(int i, int j) {
+        switch (j){
+            case 0:
+                return i - numOfColumns;
+            case 1:
+                return i + numOfColumns;
+            case 2:
+                return i + 1;
+            case 3:
+                return i - 1;
+            default:
+                return -1;
+        }
+    }
+
     @Override
     public String toString() {
         return "Graph: " +

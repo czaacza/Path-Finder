@@ -37,7 +37,7 @@ public class GraphGenerator {
         if (chance < 0 || chance > 100) {
             return new InfoLabel("% for no connection should NOT be less than 0 or greater than 100", InfoLabelSource.GENERATE, true);
         }
-        return new InfoLabel("Generate arguments are valid", InfoLabelSource.GENERATE, false);
+        return new InfoLabel("", InfoLabelSource.GENERATE, false);
     }
 
     public Graph generateGraph() {
