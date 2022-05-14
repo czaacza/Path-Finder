@@ -7,11 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-import java.util.LinkedList;
-
 public class MainController {
 
     Graph graph;
+    GraphDrawer graphDrawer;
 
     @FXML
     private AnchorPane mainPane;
@@ -64,6 +63,12 @@ public class MainController {
     @FXML
     private Label lblBfs;
 
+    @FXML
+    private Button startVertexChooseButton;
+
+    @FXML
+    private Button endVertexChooseButton;
+
     public void submitGenerate(ActionEvent event) {
         int numOfRows;
         int numOfColumns;
@@ -92,7 +97,6 @@ public class MainController {
         }
         graph = genGraph.generateGraph();
 
-        System.out.println(graph);
         GraphDrawer graphDrawer = new GraphDrawer(graphPane, graph);
         graphDrawer.clearGraph();
         graphDrawer.drawGraph();
@@ -112,23 +116,18 @@ public class MainController {
     }
 
     public void submitLoad(ActionEvent event) throws Exception {
-        System.out.println("graphLoader(" + inputLoadPathField.getText() + ")");
-
-       GraphLoader graphLoader = new GraphLoader(inputLoadPathField.getText());
-       InfoLabel loadInfo = graphLoader.loadGraph();
+        GraphLoader graphLoader = new GraphLoader(inputLoadPathField.getText());
+        InfoLabel loadInfo = graphLoader.loadGraph();
         mainPane.getChildren().add(loadInfo);
-            loadInfo.showInfoLabel();
-            if(!loadInfo.isError()){
-                graph = graphLoader.getGraph();
-                System.out.println(graph);
-                GraphDrawer graphDrawer = new GraphDrawer(graphPane, graph);
-                graphDrawer.clearGraph();
-                graphDrawer.drawGraph();
-            }
-
+        loadInfo.showInfoLabel();
+        if (!loadInfo.isError()) {
+            graph = graphLoader.getGraph();
+            manageGraph();
+        }
+        lblBfs.setText("");
     }
 
-    public void submitSave(){
+    public void submitSave() {
         GraphSaver graphSaver = new GraphSaver(graph, outputSavePathField.getText());
 
         InfoLabel saveInfo = graphSaver.saveGraph();
@@ -137,11 +136,38 @@ public class MainController {
         saveInfo.showInfoLabel();
     }
 
-    public void submitSplit(){
+    public void submitSplit() {
         GraphSplitter graphSplitter = new GraphSplitter(graph, startVertexField.getText(), endVertexField.getText());
         graphSplitter.splitGraph();
+    }
 
+    public void manageGraph() {
+        graphDrawer = new GraphDrawer(graphPane, graph);
+        graphDrawer.clearGraph();
+        graphDrawer.drawGraph();
+        graphDrawer.selectVertices();
+    }
 
+    public void submitStartVertexChooseButton() {
+        if (graphDrawer != null) {
+            graphDrawer.setEndChooseActive(false);
+            graphDrawer.setStartChooseActive(true);
+        } else {
+            InfoLabel notLoadedGraphLabel = new InfoLabel("Graph not loaded, you cannot choose a vertex", 900, 142, true);
+            mainPane.getChildren().add(notLoadedGraphLabel);
+            notLoadedGraphLabel.showInfoLabel();
+        }
+    }
+
+    public void submitEndVertexChooseButton() {
+        if (graphDrawer != null) {
+            graphDrawer.setEndChooseActive(true);
+            graphDrawer.setStartChooseActive(false);
+        } else{
+            InfoLabel notLoadedGraphLabel = new InfoLabel("Graph not loaded, you cannot choose a vertex", 900, 142, true);
+            mainPane.getChildren().add(notLoadedGraphLabel);
+            notLoadedGraphLabel.showInfoLabel();
+        }
     }
 
 

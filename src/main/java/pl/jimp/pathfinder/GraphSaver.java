@@ -37,7 +37,6 @@ public class GraphSaver {
             FileWriter fileWriter = new FileWriter(outputFilePath, false);
             PrintWriter printWriter = new PrintWriter(fileWriter);
 
-            System.out.println("saveGraph() succesfully saved");
             printWriter.println(graph.getNumOfRows() + " " + graph.getNumOfColumns());
             for (int vertexIndex = 0; vertexIndex < graph.getNumOfRows() * graph.getNumOfColumns(); vertexIndex++) {
                 printWriter.print("\t");
