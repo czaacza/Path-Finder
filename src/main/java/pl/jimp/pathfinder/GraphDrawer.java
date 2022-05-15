@@ -1,5 +1,6 @@
 package pl.jimp.pathfinder;
 
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -13,6 +14,7 @@ public class GraphDrawer {
 
     private AnchorPane graphPane;
     private AnchorPane edgePane;
+    private Label lblPathLength;
     private Graph graph;
     private Search search;
 
@@ -24,10 +26,11 @@ public class GraphDrawer {
     private Line[][] drawnEdges;
 
 
-    public GraphDrawer(AnchorPane graphPane,AnchorPane edgePane, Graph graph) {
+    public GraphDrawer(AnchorPane graphPane, AnchorPane edgePane, Graph graph, Label lblPathLength) {
         this.graphPane = graphPane;
         this.edgePane = edgePane;
         this.graph = graph;
+        this.lblPathLength = lblPathLength;
         circleRadius = PANE_WIDTH * graph.getNumOfRows() > PANE_HEIGHT * graph.getNumOfColumns() ? PANE_HEIGHT / graph.getNumOfRows() / 4.0 : PANE_WIDTH / graph.getNumOfColumns() / 4.0;
         drawnVertices = new Circle[graph.getNumOfRows()* graph.getNumOfColumns()];
         drawnEdges = new Line[graph.getNumOfColumns()* graph.getNumOfRows()][4];
@@ -49,11 +52,17 @@ public class GraphDrawer {
                 vertexCircle.setOnMouseClicked(event -> {
                     if(search == null){
                         search = new Search(graph);
-                        search.startVertex = finalRow * graph.getNumOfColumns() + finalColumn;
+                        search.setStartVertex(finalRow * graph.getNumOfColumns() + finalColumn);
                     } else {
-                        search.endVertex = finalRow * graph.getNumOfColumns() + finalColumn;
-                        System.out.println("start = " + search.startVertex + " end = " + search.endVertex);
-                        drawPath(search.dijkstra());
+                        search.setEndVertex(finalRow * graph.getNumOfColumns() + finalColumn);
+                        List<Integer> path = search.dijkstra();
+                        if(search.getDistance() == Double.MAX_VALUE) {
+                            lblPathLength.setText("no connection between given vertices");
+                            search = null;
+                            return;
+                        }
+                        lblPathLength.setText(String.valueOf(search.getDistance()));
+                        drawPath(path);
                         search = null;
                     }
                 });
@@ -67,7 +76,7 @@ public class GraphDrawer {
 
 
 
-    public void drawEdges(Circle [] drawnVertices) {
+    private void drawEdges(Circle [] drawnVertices) {
 
         double maxWeight = 0.0;
         double minWeight = Double.MAX_VALUE;
