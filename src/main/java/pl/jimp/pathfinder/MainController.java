@@ -7,11 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-import java.util.LinkedList;
-
 public class MainController {
 
     Graph graph;
+    GraphDrawer graphDrawer;
 
     @FXML
     private AnchorPane mainPane;
@@ -68,6 +67,7 @@ public class MainController {
     @FXML
     private Label lblPathLength;
 
+
     public void submitGenerate(ActionEvent event) {
         int numOfRows;
         int numOfColumns;
@@ -95,11 +95,7 @@ public class MainController {
             return;
         }
         graph = genGraph.generateGraph();
-
-        System.out.println(graph);
-        GraphDrawer graphDrawer = new GraphDrawer(graphPane,edgePane, graph, lblPathLength);
-        graphDrawer.clearGraph();
-        graphDrawer.drawGraph();
+        manageGraph();
     }
 
     public void submitBfs(ActionEvent event) {
@@ -116,23 +112,18 @@ public class MainController {
     }
 
     public void submitLoad(ActionEvent event) throws Exception {
-        System.out.println("graphLoader(" + inputLoadPathField.getText() + ")");
-
-       GraphLoader graphLoader = new GraphLoader(inputLoadPathField.getText());
-       InfoLabel loadInfo = graphLoader.loadGraph();
+        GraphLoader graphLoader = new GraphLoader(inputLoadPathField.getText());
+        InfoLabel loadInfo = graphLoader.loadGraph();
         mainPane.getChildren().add(loadInfo);
-            loadInfo.showInfoLabel();
-            if(!loadInfo.isError()){
-                graph = graphLoader.getGraph();
-                System.out.println(graph);
-                GraphDrawer graphDrawer = new GraphDrawer(graphPane, edgePane, graph, lblPathLength);
-                graphDrawer.clearGraph();
-                graphDrawer.drawGraph();
-            }
-
+        loadInfo.showInfoLabel();
+        if (!loadInfo.isError()) {
+            graph = graphLoader.getGraph();
+            manageGraph();
+        }
+        lblBfs.setText("");
     }
 
-    public void submitSave(){
+    public void submitSave() {
         GraphSaver graphSaver = new GraphSaver(graph, outputSavePathField.getText());
 
         InfoLabel saveInfo = graphSaver.saveGraph();
@@ -141,12 +132,14 @@ public class MainController {
         saveInfo.showInfoLabel();
     }
 
-    public void submitSplit(){
+    public void submitSplit() {
         GraphSplitter graphSplitter = new GraphSplitter(graph, startVertexField.getText(), endVertexField.getText());
         graphSplitter.splitGraph();
-
-
     }
 
-
+    public void manageGraph() {
+        graphDrawer = new GraphDrawer(graphPane, edgePane, graph, lblPathLength);
+        graphDrawer.clearGraph();
+        graphDrawer.drawGraph();
+    }
 }

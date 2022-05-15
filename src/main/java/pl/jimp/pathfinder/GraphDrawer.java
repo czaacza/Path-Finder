@@ -17,11 +17,9 @@ public class GraphDrawer {
     private Label lblPathLength;
     private Graph graph;
     private Search search;
-
     private double circleRadius;
     private final static double PANE_WIDTH = 1000.0;
     private final static double PANE_HEIGHT = 750.0;
-
     private Circle [] drawnVertices;
     private Line[][] drawnEdges;
 
@@ -36,36 +34,16 @@ public class GraphDrawer {
         drawnEdges = new Line[graph.getNumOfColumns()* graph.getNumOfRows()][4];
     }
 
-    public void drawGraph(){
-        for(int row = 0; row < graph.getNumOfRows(); row++){
-            for(int column = 0; column < graph.getNumOfColumns(); column++){
+    public void drawGraph() {
+        for (int row = 0; row < graph.getNumOfRows(); row++) {
+            for (int column = 0; column < graph.getNumOfColumns(); column++) {
                 Circle vertexCircle = new Circle();
                 vertexCircle.setFill(Paint.valueOf("violet"));
                 vertexCircle.setRadius(circleRadius);
                 vertexCircle.setLayoutY(circleRadius + (row * circleRadius*4));
                 vertexCircle.setLayoutX(circleRadius + (column *circleRadius*4));
 
-
-                int finalColumn = column;
-                int finalRow = row;
-
-                vertexCircle.setOnMouseClicked(event -> {
-                    if(search == null){
-                        search = new Search(graph);
-                        search.setStartVertex(finalRow * graph.getNumOfColumns() + finalColumn);
-                    } else {
-                        search.setEndVertex(finalRow * graph.getNumOfColumns() + finalColumn);
-                        List<Integer> path = search.dijkstra();
-                        if(search.getDistance() == Double.MAX_VALUE) {
-                            lblPathLength.setText("no connection between given vertices");
-                            search = null;
-                            return;
-                        }
-                        lblPathLength.setText(String.valueOf(search.getDistance()));
-                        drawPath(path);
-                        search = null;
-                    }
-                });
+                findPathOnMouseClick(vertexCircle, row, column);
 
                 drawnVertices[column + (row * graph.getNumOfColumns())] = vertexCircle;
                 graphPane.getChildren().add(drawnVertices[column + (row * graph.getNumOfColumns())]);
@@ -74,6 +52,25 @@ public class GraphDrawer {
         drawEdges(drawnVertices);
     }
 
+    private void findPathOnMouseClick(Circle vertexCircle, int row, int column) {
+        vertexCircle.setOnMouseClicked(event -> {
+            if(search == null){
+                search = new Search(graph);
+                search.setStartVertex(row * graph.getNumOfColumns() + column);
+            } else {
+                search.setEndVertex(row * graph.getNumOfColumns() + column);
+                List<Integer> path = search.dijkstra();
+                if(search.getDistance() == Double.MAX_VALUE) {
+                    lblPathLength.setText("no connection between given vertices");
+                    search = null;
+                    return;
+                }
+                lblPathLength.setText(String.valueOf(search.getDistance()));
+                drawPath(path);
+                search = null;
+            }
+        });
+    }
 
 
     private void drawEdges(Circle [] drawnVertices) {
@@ -92,8 +89,14 @@ public class GraphDrawer {
                 if((graph.getVertices().get(i).getWeights().get(j)) > 0) {
                     Line edgeLine = new Line();
 
-                    double amountOfRedColor = graph.getVertices().get(i).getWeights().get(j) / (maxWeight - minWeight) + minWeight;
-                    edgeLine.setStroke(Color.color(amountOfRedColor, 0.9, 0.0));
+                    double amountOfRedColor = 1;
+                    double amountOfGreenColor = 1;
+                    if(graph.getVertices().get(i).getWeights().get(j) / (maxWeight - minWeight) + minWeight < 0.5)
+                        amountOfRedColor = 2 * (graph.getVertices().get(i).getWeights().get(j) / (maxWeight - minWeight) + minWeight);
+                    if(graph.getVertices().get(i).getWeights().get(j) / (maxWeight - minWeight) + minWeight > 0.5)
+                        amountOfGreenColor = 2 * (graph.getVertices().get(i).getWeights().get(j) / (maxWeight - minWeight) + minWeight - 0.5);
+
+                    edgeLine.setStroke(Color.color(amountOfRedColor, amountOfGreenColor, 0.0));
                     edgeLine.setStrokeWidth(drawnVertices[i].getRadius()/2);
                     edgeLine.setStartX(drawnVertices[i].getLayoutX());
                     edgeLine.setStartY(drawnVertices[i].getLayoutY());
@@ -106,6 +109,10 @@ public class GraphDrawer {
         }
     }
     private void drawPath(List<Integer> path) {
+        if(path.get(0) == path.get(1)) {  // if startVertex == endVertex
+            drawnVertices[path.get(0)].setFill(Color.BLACK);
+            return;
+        }
         for(int i = 0; i < path.size() - 1; i++){
             drawnVertices[path.get(i)].setFill(Color.BLACK);
             int j = -1;
@@ -129,7 +136,7 @@ public class GraphDrawer {
         drawnVertices[path.get(path.size() - 1)].setFill(Color.BLACK);
     }
 
-    public void clearGraph(){
+    public void clearGraph() {
         graphPane.getChildren().clear();
         edgePane.getChildren().clear();
     }

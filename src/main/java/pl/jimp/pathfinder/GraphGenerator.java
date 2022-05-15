@@ -76,6 +76,8 @@ public class GraphGenerator {
     }
 
     private double randomNumberInRange(double min, double max) {
+        if(min == max)
+            return min;
         Random random = new Random();
         return random.nextDouble(max - min) + min;
     }

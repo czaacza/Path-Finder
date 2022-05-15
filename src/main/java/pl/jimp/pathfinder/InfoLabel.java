@@ -7,16 +7,21 @@ import javafx.util.Duration;
 public class InfoLabel extends Label {
 
     private String text;
-    private int layoutY;
     private boolean isError;
 
     public InfoLabel(String text, InfoLabelSource infoLabelSource, boolean isError) {
         super(text);
-        this.layoutY = infoLabelSource.getLayoutY();
 
         setLayoutX(75);
-        setLayoutY(layoutY);
+        setLayoutY(infoLabelSource.getLayoutY());
         this.isError = isError;
+    }
+
+    public InfoLabel(String text, int x, int y, boolean isError){
+        super(text);
+
+        setLayoutX(x);
+        setLayoutY(y);
     }
 
     public void showInfoLabel(){
