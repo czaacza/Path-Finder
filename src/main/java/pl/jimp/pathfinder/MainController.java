@@ -65,6 +65,8 @@ public class MainController {
 
     @FXML
     private Label lblBfs;
+    @FXML
+    private Label lblPathLength;
 
     public void submitGenerate(ActionEvent event) {
         int numOfRows;
@@ -95,7 +97,7 @@ public class MainController {
         graph = genGraph.generateGraph();
 
         System.out.println(graph);
-        GraphDrawer graphDrawer = new GraphDrawer(graphPane,edgePane, graph);
+        GraphDrawer graphDrawer = new GraphDrawer(graphPane,edgePane, graph, lblPathLength);
         graphDrawer.clearGraph();
         graphDrawer.drawGraph();
     }
@@ -123,7 +125,7 @@ public class MainController {
             if(!loadInfo.isError()){
                 graph = graphLoader.getGraph();
                 System.out.println(graph);
-                GraphDrawer graphDrawer = new GraphDrawer(graphPane, edgePane, graph);
+                GraphDrawer graphDrawer = new GraphDrawer(graphPane, edgePane, graph, lblPathLength);
                 graphDrawer.clearGraph();
                 graphDrawer.drawGraph();
             }

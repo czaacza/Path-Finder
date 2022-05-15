@@ -3,13 +3,27 @@ package pl.jimp.pathfinder;
 import java.util.*;
 
 public class Search {
-	public int startVertex;
-	public int endVertex;
+	private int startVertex;
+	private int endVertex;
+	private double distance;
 	private Graph graph;
 
 	public Search(Graph graph){
 		this.graph = graph;
 	}
+
+	public double getDistance() {
+		return distance;
+	}
+
+	public void setStartVertex(int startVertex) {
+		this.startVertex = startVertex;
+	}
+
+	public void setEndVertex(int endVertex) {
+		this.endVertex = endVertex;
+	}
+
 
 	public List<Integer> dijkstra() {
 		int numOfVertices = graph.getNumOfColumns() * graph.getNumOfRows();
@@ -28,12 +42,11 @@ public class Search {
 			distance[i] = Double.MAX_VALUE;
 		}
 
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < 4; i++)
 		{
-			if (graph.getVertices().get(startVertex).getWeights().get(i) != 0)
+
+			if (graph.getVertices().get(startVertex).getWeights().get(i) != 0) {
 				k = graph.getIndexOfTheVertex(startVertex, i);
-			if (k != -1)
-			{
 				distance[k] = graph.getVertices().get(startVertex).getWeights().get(i);
 			}
 		}
@@ -41,7 +54,7 @@ public class Search {
 		distance[startVertex] = 0;
 		count++;
 
-		while (count < numOfVertices - 1) {
+		while (count < numOfVertices) {
 			minDistance = Double.MAX_VALUE;
 			for (int i = 0; i < numOfVertices; i++)
 			{
@@ -54,12 +67,9 @@ public class Search {
 			visited[nextNode] = true;
 			for (int i = 0; i < 4; i++)
 			{
-				if (graph.getVertices().get(nextNode).getWeights().get(i) != 0)
+				if (graph.getVertices().get(nextNode).getWeights().get(i) != 0) {
 					k = graph.getIndexOfTheVertex(nextNode, i);
-				if (k != -1)
-				{
-					if (!visited[k] && minDistance + graph.getVertices().get(nextNode).getWeights().get(i) < distance[k] && graph.getVertices().get(nextNode).getWeights().get(i) != 0)
-					{
+					if (!visited[k] && minDistance + graph.getVertices().get(nextNode).getWeights().get(i) < distance[k] && graph.getVertices().get(nextNode).getWeights().get(i) != 0) {
 						distance[k] = minDistance + graph.getVertices().get(nextNode).getWeights().get(i);
 						pred[k] = nextNode;
 					}
@@ -69,6 +79,7 @@ public class Search {
 		}
 
 		System.out.println("distance = " + distance[endVertex]);
+		this.distance = distance[endVertex];
 		int numOfElements = 0;
 		List<Integer> path = new ArrayList<>();
 		path.add(endVertex);
@@ -82,6 +93,7 @@ public class Search {
 			System.out.print(path.get(i) + "->");
 		}
 		System.out.print(path.get(numOfElements));
+		System.out.println();
 		return path;
 	}
 }
