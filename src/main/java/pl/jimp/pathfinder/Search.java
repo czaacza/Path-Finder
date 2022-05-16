@@ -96,4 +96,12 @@ public class Search {
 		System.out.println();
 		return path;
 	}
+
+	public int getStartVertex() {
+		return startVertex;
+	}
+
+	public int getEndVertex() {
+		return endVertex;
+	}
 }

@@ -22,6 +22,7 @@ public class GraphDrawer {
     private final static double PANE_HEIGHT = 750.0;
     private Circle [] drawnVertices;
     private Line[][] drawnEdges;
+    List<Integer> path;
 
 
     public GraphDrawer(AnchorPane graphPane, AnchorPane edgePane, Graph graph, Label lblPathLength) {
@@ -56,10 +57,14 @@ public class GraphDrawer {
         vertexCircle.setOnMouseClicked(event -> {
             if(search == null){
                 search = new Search(graph);
+                vertexCircle.setFill(Paint.valueOf("black"));
                 search.setStartVertex(row * graph.getNumOfColumns() + column);
             } else {
+                if(path != null){
+                    clearPath(path);
+                }
                 search.setEndVertex(row * graph.getNumOfColumns() + column);
-                List<Integer> path = search.dijkstra();
+                path = search.dijkstra();
                 if(search.getDistance() == Double.MAX_VALUE) {
                     lblPathLength.setText("no connection between given vertices");
                     search = null;
@@ -70,6 +75,7 @@ public class GraphDrawer {
                 search = null;
             }
         });
+        System.out.println(path);
     }
 
 
@@ -135,6 +141,13 @@ public class GraphDrawer {
         }
         drawnVertices[path.get(path.size() - 1)].setFill(Color.BLACK);
     }
+    private void clearPath(List<Integer> path){
+        for(int i = 0; i <= path.size() - 1; i++){
+            System.out.println("path["+i+"] " + ": " + path.get(i));
+            drawnVertices[path.get(i)].setFill(Paint.valueOf("violet"));
+        }
+    }
+
 
     public void clearGraph() {
         graphPane.getChildren().clear();
