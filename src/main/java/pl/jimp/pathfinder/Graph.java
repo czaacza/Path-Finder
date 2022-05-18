@@ -15,8 +15,8 @@ public class Graph {
         createVertices();
     }
 
-    private void createVertices(){
-        for(int i = 0; i < numOfRows * numOfColumns; i++){
+    private void createVertices() {
+        for (int i = 0; i < numOfRows * numOfColumns; i++) {
             vertices.add(new Vertex(i));
         }
     }
@@ -34,7 +34,7 @@ public class Graph {
     }
 
     public int getIndexOfTheVertex(int i, int j) {
-        switch (j){
+        switch (j) {
             case 0:
                 return i - numOfColumns;
             case 1:
@@ -46,6 +46,19 @@ public class Graph {
             default:
                 return -1;
         }
+    }
+
+    public int getDirectionFromIndex(int vertexA, int vertexB) {
+        if (vertexB == vertexA - numOfColumns) {
+            return 0;
+        } else if (vertexB == vertexA + numOfColumns) {
+            return 1;
+        } else if (vertexB == vertexA + 1) {
+            return 2;
+        } else if (vertexB == vertexA - 1) {
+            return 3;
+        }
+        return -1;
     }
 
     @Override

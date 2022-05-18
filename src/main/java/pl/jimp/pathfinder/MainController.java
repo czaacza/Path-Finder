@@ -139,7 +139,6 @@ public class MainController {
 
     public void manageGraph() {
         graphDrawer = new GraphDrawer(graphPane, edgePane, graph, lblPathLength);
-        graphDrawer.clearGraph();
         graphDrawer.drawGraph();
     }
 }
