@@ -114,7 +114,7 @@ public class GraphDrawer {
                     if (graph.getVertices().get(i).getWeights().get(j) / (maxWeight - minWeight) + minWeight < 0.5)
                         amountOfRedColor = 2 * (graph.getVertices().get(i).getWeights().get(j) / (maxWeight - minWeight) + minWeight);
                     if (graph.getVertices().get(i).getWeights().get(j) / (maxWeight - minWeight) + minWeight > 0.5)
-                        amountOfGreenColor = 2 * (graph.getVertices().get(i).getWeights().get(j) / (maxWeight - minWeight) + minWeight - 0.5);
+                        amountOfGreenColor = 2 * (1 - graph.getVertices().get(i).getWeights().get(j) / (maxWeight - minWeight) + minWeight);
 
                     Color currentColor = Color.color(amountOfRedColor, amountOfGreenColor, 0.0);
                     edgeLine.setStroke(currentColor);
