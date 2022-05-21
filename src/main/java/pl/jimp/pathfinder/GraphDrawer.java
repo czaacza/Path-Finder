@@ -165,13 +165,15 @@ public class GraphDrawer {
     }
 
     private void clearPath() {
-        if (path.size() >= 2 && !Objects.equals(path.get(0), path.get(1))) {
+        if (path.size() > 2 && !Objects.equals(path.get(0), path.get(1))) {
+            System.out.println("dlugosc = " + path.size());
             for (int i = 0; i < path.size() - 1; i++) {
                 drawnEdges[path.get(i)][graph.getDirectionFromIndex(path.get(i), path.get(i + 1))].setStroke(edgesColors.get(i));
                 drawnEdges[path.get(i + 1)][graph.getDirectionFromIndex(path.get(i + 1), path.get(i))].setStroke(edgesColors.get(i));
                 drawnVertices[path.get(i)].setFill(VERTEX_DEFAULT_COLOR);
             }
         }
+        drawnVertices[path.get(0)].setFill(VERTEX_DEFAULT_COLOR);
         drawnVertices[path.get(path.size() - 1)].setFill(VERTEX_DEFAULT_COLOR);
         edgesColors.clear();
     }
