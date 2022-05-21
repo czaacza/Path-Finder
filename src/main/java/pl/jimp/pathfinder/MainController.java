@@ -134,7 +134,11 @@ public class MainController {
 
     public void submitSplit() {
         GraphSplitter graphSplitter = new GraphSplitter(graph, startVertexField.getText(), endVertexField.getText());
-        graphSplitter.splitGraph();
+        InfoLabel splitInfo = graphSplitter.splitGraph();
+        if(splitInfo != null && splitInfo.isError()) {
+            splitInfo.showInfoLabel();
+            return;
+        }
         graph = graphSplitter.getGraph();
         manageGraph();
     }
