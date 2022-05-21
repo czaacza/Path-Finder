@@ -174,6 +174,10 @@ public class GraphDrawer {
             }
         }
         drawnVertices[path.get(0)].setFill(VERTEX_DEFAULT_COLOR);
+        if(graph.getDirectionFromIndex(path.get(0), path.get(1)) != -1 && !Objects.isNull(drawnEdges[path.get(0)][graph.getDirectionFromIndex(path.get(0), path.get(1))])) {
+            drawnEdges[path.get(0)][graph.getDirectionFromIndex(path.get(0), path.get(1))].setStroke(edgesColors.get(0));
+            drawnEdges[path.get(1)][graph.getDirectionFromIndex(path.get(1), path.get(0))].setStroke(edgesColors.get(0));
+        }
         drawnVertices[path.get(path.size() - 1)].setFill(VERTEX_DEFAULT_COLOR);
         edgesColors.clear();
     }
