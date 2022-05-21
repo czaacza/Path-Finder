@@ -34,18 +34,13 @@ public class Graph {
     }
 
     public int getIndexOfTheVertex(int i, int j) {
-        switch (j) {
-            case 0:
-                return i - numOfColumns;
-            case 1:
-                return i + numOfColumns;
-            case 2:
-                return i + 1;
-            case 3:
-                return i - 1;
-            default:
-                return -1;
-        }
+        return switch (j) {
+            case 0 -> i - numOfColumns;
+            case 1 -> i + numOfColumns;
+            case 2 -> i + 1;
+            case 3 -> i - 1;
+            default -> -1;
+        };
     }
 
     public int getDirectionFromIndex(int vertexA, int vertexB) {
