@@ -80,8 +80,6 @@ public class MainController {
 
 
 	public void submitGenerate(ActionEvent event) {
-		ZoomableScrollPane zsp = new ZoomableScrollPane(zoomPane);
-		mainPane.getChildren().add(zsp);
 		int numOfRows;
 		int numOfColumns;
 		double minWeight;
@@ -157,43 +155,10 @@ public class MainController {
 	}
 
 	public void manageGraph() {
+		ZoomableScrollPane zsp = new ZoomableScrollPane(zoomPane);
+		mainPane.getChildren().add(zsp);
 		graphDrawer = new GraphDrawer(graphPane, edgePane, graph, lblPathLength);
 		graphDrawer.drawGraph();
 	}
-/*
-    public void scrollZoom() {
-        this.zoomPane.setOnScroll((ScrollEvent event) -> {
-            double zoomFactor = 1.1;
-            double deltaY = event.getDeltaY();
-            if(deltaY < 0) {
-                zoomFactor = 2.0 - zoomFactor;
-            }
-            Scale newScale = new Scale();
-            newScale.setPivotX(event.getX());
-            newScale.setPivotY(event.getY());
-            newScale.setX( zoomPane.getScaleX() * zoomFactor );
-            newScale.setY( zoomPane.getScaleY() * zoomFactor );
-            zoomPane.getTransforms().add(newScale);
-           // zoomPane.setTranslateX(zoomPane.getTranslateX());
-            //zoomPane.setTranslateY(zoomPane.getTranslateY());
-            zoomPane.setPrefHeight(zoomPane.getPrefHeight() * zoomFactor);
-            zoomPane.setPrefWidth(zoomPane.getPrefWidth() * zoomFactor);
-            /*
-            zoomPane.setPrefHeight(zoomPane.getPrefHeight() * zoomFactor);
-            zoomPane.setPrefWidth(zoomPane.getPrefWidth() * zoomFactor);
-            zoomPane.setScaleX(zoomPane.getScaleX() * zoomFactor);
-            zoomPane.setScaleY(zoomPane.getScaleY() * zoomFactor);*/
-       /*     event.consume();
-        });
-    }
-*/
 
-    /*
-    public void zoom() {
-        this.zoomPane.setOnZoom((ZoomEvent event) -> {
-            zoomPane.setScaleX(zoomPane.getScaleX() * event.getTotalZoomFactor());
-            zoomPane.setScaleY(zoomPane.getScaleY() * event.getTotalZoomFactor());
-        });
-    }
-    */
 }
