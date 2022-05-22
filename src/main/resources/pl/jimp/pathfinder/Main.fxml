@@ -10,7 +10,6 @@
 
 <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jimp.pathfinder.MainController">
    <children>
-      <AnchorPane fx:id="edgePane" layoutX="420.0" layoutY="167.0" prefHeight="750.0" prefWidth="1000.0" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="6.0" prefHeight="63.0" prefWidth="1470.0" text="Graph Path Finder ">
          <font>
             <Font size="32.0" />
@@ -158,7 +157,6 @@
             </VBox>
          </children>
       </VBox>
-      <AnchorPane fx:id="graphPane" layoutX="420.0" layoutY="167.0" prefHeight="750.0" prefWidth="1000.0" />
       <Pane layoutX="886.0" layoutY="77.0" prefHeight="63.0" prefWidth="534.0" style="-fx-border-color: #333; -fx-border-width: 2; -fx-border-radius: 12; -fx-padding: 15;">
          <children>
             <Label layoutX="7.0" layoutY="10.0" prefHeight="41.0" prefWidth="190.0" text="Length of the last path:">
@@ -181,6 +179,12 @@
                </font>
             </Button>
             <Label fx:id="lblBfs" alignment="CENTER" layoutX="279.0" layoutY="12.0" prefHeight="41.0" prefWidth="221.0" />
+         </children>
+      </Pane>
+      <Pane fx:id="zoomPane" layoutX="420.0" layoutY="167.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="750.0" prefWidth="1000.0">
+         <children>
+            <AnchorPane fx:id="edgePane" prefHeight="750.0" prefWidth="1000.0" />
+            <AnchorPane fx:id="graphPane" prefHeight="750.0" prefWidth="1000.0" />
          </children>
       </Pane>
    </children>
