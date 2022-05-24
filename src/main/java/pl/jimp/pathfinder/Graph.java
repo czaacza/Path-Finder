@@ -7,6 +7,7 @@ public class Graph {
     private int numOfRows;
     private int numOfColumns;
     private List<Vertex> vertices;
+    private boolean splitMode = false;
 
     public Graph(int numOfRows, int numOfColumns) {
         this.numOfRows = numOfRows;
@@ -54,6 +55,12 @@ public class Graph {
             return 3;
         }
         return -1;
+    }
+    public void setSplitMode(boolean mode) {
+        splitMode = mode;
+    }
+    public boolean getSplitMode() {
+        return splitMode;
     }
 
     @Override

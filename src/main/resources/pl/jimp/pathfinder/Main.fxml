@@ -126,26 +126,8 @@
                <children>
                   <VBox>
                      <children>
-                        <Pane prefHeight="46.0" prefWidth="225.0">
-                           <children>
-                              <Label layoutY="5.0" prefHeight="30.0" prefWidth="151.0" text="Start vertex">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="startVertexField" layoutX="134.0" layoutY="5.0" prefHeight="30.0" prefWidth="73.0" />
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="46.0" prefWidth="225.0">
-                           <children>
-                              <Label layoutY="8.0" prefHeight="30.0" prefWidth="151.0" text="End vertex">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="endVertexField" layoutX="134.0" layoutY="8.0" prefHeight="30.0" prefWidth="73.0" />
-                           </children>
-                        </Pane>
+                        <Pane prefHeight="46.0" prefWidth="225.0" />
+                        <Pane prefHeight="46.0" prefWidth="225.0" />
                      </children>
                   </VBox>
                   <Button fx:id="splitButton" mnemonicParsing="false" onAction="#submitSplit" prefHeight="35.0" prefWidth="250.0" text="SPLIT GRAPH">

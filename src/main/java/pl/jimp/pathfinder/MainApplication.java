@@ -9,22 +9,22 @@ import java.io.IOException;
 
 public class MainApplication extends Application {
 
-    @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("Main.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1500, 1000);
-        stage.setTitle("Graph Path Finder");
-        stage.setScene(scene);
-        stage.show();
-    }
+	@Override
+	public void start(Stage stage) throws IOException {
+		FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("Main.fxml"));
+		Scene scene = new Scene(fxmlLoader.load(), 1500, 1000);
+		stage.setTitle("Graph Path Finder");
+		stage.setScene(scene);
+		stage.show();
+	}
 
-    public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception {
 
-        GraphLoader graphLoader = new GraphLoader("src/main/resources/pl/jimp/pathfinder/data/mygraph");
-        graphLoader.loadGraph();
-        Graph graph = graphLoader.getGraph();
-        GraphSaver graphSaver = new GraphSaver(graph, "src/main/resources/pl/jimp/pathfinder/data/example");
-        graphSaver.saveGraph();
-        launch();
-    }
+		GraphLoader graphLoader = new GraphLoader("src/main/resources/pl/jimp/pathfinder/data/mygraph");
+		graphLoader.loadGraph();
+		Graph graph = graphLoader.getGraph();
+		GraphSaver graphSaver = new GraphSaver(graph, "src/main/resources/pl/jimp/pathfinder/data/example");
+		graphSaver.saveGraph();
+		launch();
+	}
 }

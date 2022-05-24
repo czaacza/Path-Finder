@@ -144,7 +144,8 @@ public class MainController {
 	}
 
 	public void submitSplit() {
-		GraphSplitter graphSplitter = new GraphSplitter(graph, startVertexField.getText(), endVertexField.getText());
+		graph.setSplitMode(!graph.getSplitMode());
+		/*
 		InfoLabel splitInfo = graphSplitter.splitGraph();
 		if(splitInfo != null && splitInfo.isError()) {
 			splitInfo.showInfoLabel();
@@ -152,6 +153,7 @@ public class MainController {
 		}
 		graph = graphSplitter.getGraph();
 		manageGraph();
+		graph.setSplitMode(false);*/
 	}
 
 	public void manageGraph() {
@@ -159,6 +161,7 @@ public class MainController {
 		mainPane.getChildren().add(zsp);
 		graphDrawer = new GraphDrawer(graphPane, edgePane, graph, lblPathLength);
 		graphDrawer.drawGraph();
+		graph = graphDrawer.getGraph();
 	}
 
 }
