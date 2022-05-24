@@ -18,6 +18,8 @@ public class GraphDrawer {
 	private AnchorPane graphPane;
 	private AnchorPane edgePane;
 	private Label lblPathLength;
+	private AnchorPane mainPane;
+	private Label lblSplit;
 	private Graph graph;
 	private Search search;
 	private double circleRadius;
@@ -30,11 +32,14 @@ public class GraphDrawer {
 
 	private final static Color VERTEX_DEFAULT_COLOR = Color.VIOLET;
 	private final static Color VERTEX_VISITED_COLOR = Color.BLACK;
-	public GraphDrawer(AnchorPane graphPane, AnchorPane edgePane, Graph graph, Label lblPathLength) {
+	private final static Color VERTEX_SPLIT_COLOR = Color.BLUE;
+	public GraphDrawer(AnchorPane graphPane, AnchorPane edgePane, Graph graph, Label lblPathLength, AnchorPane mainPane, Label lblSplit) {
 		this.graphPane = graphPane;
 		this.edgePane = edgePane;
 		this.graph = graph;
 		this.lblPathLength = lblPathLength;
+		this.mainPane = mainPane;
+		this.lblSplit = lblSplit;
 		circleRadius = PANE_WIDTH * graph.getNumOfRows() > PANE_HEIGHT * graph.getNumOfColumns() ? PANE_HEIGHT / graph.getNumOfRows() / 4.0 : PANE_WIDTH / graph.getNumOfColumns() / 4.0;
 		drawnVertices = new Circle[graph.getNumOfRows() * graph.getNumOfColumns()];
 		drawnEdges = new Line[graph.getNumOfColumns() * graph.getNumOfRows()][4];
@@ -62,36 +67,47 @@ public class GraphDrawer {
 
 	private void findPathOnMouseClick(Circle vertexCircle, int row, int column) {
 		vertexCircle.setOnMouseClicked(event -> {
-				vertexCircle.setFill(VERTEX_VISITED_COLOR);
+				if (graph.getSplitMode()) {
+					vertexCircle.setFill(VERTEX_SPLIT_COLOR);
+				} else {
+					vertexCircle.setFill(VERTEX_VISITED_COLOR);
+				}
 				if (search == null) {
 					search = new Search(graph);
 					search.setStartVertex(row * graph.getNumOfColumns() + column);
 				} else {
-					if (path != null) {
+					if (path != null && !graph.getSplitMode()) {
 						if(!path.isEmpty()){
 							clearPath();
 						}
 					}
 					search.setEndVertex(row * graph.getNumOfColumns() + column);
 					path = search.dijkstra();
-
-					if (search.getDistance() == Double.MAX_VALUE) {
-						lblPathLength.setText("no connection between given vertices");
-						search = null;
-						return;
-					}
 					if(!graph.getSplitMode()) {
+						if (search.getDistance() == Double.MAX_VALUE) {
+							lblPathLength.setText("no connection between given vertices");
+							search = null;
+							return;
+						}
 					lblPathLength.setText(String.valueOf(search.getDistance()));
 					drawPath();
-					} else if(search.getDistance() != Double.MAX_VALUE){
-						GraphSplitter graphSplitter = new GraphSplitter(graph, path);
-						graphSplitter.splitGraph();
-						this.graph = graphSplitter.getGraph();
-						drawGraph();
-						path = null;
-						graph.setSplitMode(false);
 					} else {
-						InfoLabel splitInfo = new InfoLabel("Test", InfoLabelSource.SPLIT, true);
+						GraphSplitter graphSplitter = new GraphSplitter(graph, path);
+						InfoLabel splitInfo = graphSplitter.checkSplitArguments(search.getDistance());
+						if (splitInfo != null) {
+							mainPane.getChildren().add(splitInfo);
+							splitInfo.showInfoLabel();
+							drawnVertices[path.get(0)].setFill(VERTEX_DEFAULT_COLOR);
+							drawnVertices[path.get(path.size() - 1)].setFill(VERTEX_DEFAULT_COLOR);
+						} else {
+							graphSplitter.splitGraph();
+							this.graph = graphSplitter.getGraph();
+							drawGraph();
+							graph.setSplitMode(false);
+							lblSplit.setText("OFF");
+							lblSplit.setTextFill(Color.RED);
+						}
+						path = null;
 					}
 					search = null;
 				}

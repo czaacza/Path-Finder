@@ -4,13 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.input.ScrollEvent;
-import javafx.scene.input.ZoomEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.transform.Scale;
+import javafx.scene.paint.Color;
 
 public class MainController {
 
@@ -56,13 +53,9 @@ public class MainController {
 	private Button saveButton;
 
 	@FXML
-	private TextField startVertexField;
-
-	@FXML
-	private TextField endVertexField;
-
-	@FXML
 	private Button splitButton;
+	@FXML
+	private Label lblSplit;
 
 	@FXML
 	private Button bfsButton;
@@ -144,7 +137,20 @@ public class MainController {
 	}
 
 	public void submitSplit() {
+		if (graph == null) {
+			InfoLabel noSplitGraphInfo = new InfoLabel("Graph is not loaded. There is nothing to split.", InfoLabelSource.SPLIT, true);
+			mainPane.getChildren().add(noSplitGraphInfo);
+			noSplitGraphInfo.showInfoLabel();
+			return;
+		}
 		graph.setSplitMode(!graph.getSplitMode());
+		if(graph.getSplitMode()) {
+			lblSplit.setText("ON");
+			lblSplit.setTextFill(Color.GREEN);
+			return;
+		}
+		lblSplit.setText("OFF");
+		lblSplit.setTextFill(Color.RED);
 		/*
 		InfoLabel splitInfo = graphSplitter.splitGraph();
 		if(splitInfo != null && splitInfo.isError()) {
@@ -157,9 +163,9 @@ public class MainController {
 	}
 
 	public void manageGraph() {
-		ZoomableScrollPane zsp = new ZoomableScrollPane(zoomPane);
-		mainPane.getChildren().add(zsp);
-		graphDrawer = new GraphDrawer(graphPane, edgePane, graph, lblPathLength);
+		ZoomableScrollPane zoomableScrollPane = new ZoomableScrollPane(zoomPane);
+		mainPane.getChildren().add(zoomableScrollPane);
+		graphDrawer = new GraphDrawer(graphPane, edgePane, graph, lblPathLength, mainPane, lblSplit);
 		graphDrawer.drawGraph();
 		graph = graphDrawer.getGraph();
 	}
