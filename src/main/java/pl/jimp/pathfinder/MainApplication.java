@@ -12,7 +12,7 @@ public class MainApplication extends Application {
 	@Override
 	public void start(Stage stage) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("Main.fxml"));
-		Scene scene = new Scene(fxmlLoader.load(), 1500, 1000);
+		Scene scene = new Scene(fxmlLoader.load(), 1100, 800);
 		stage.setTitle("Graph Path Finder");
 		stage.setScene(scene);
 		stage.show();
