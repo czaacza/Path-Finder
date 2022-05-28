@@ -9,10 +9,13 @@ import java.io.IOException;
 
 public class MainApplication extends Application {
 
+	private static final int WINDOW_WIDTH = 1100;
+	private static final int WINDOW_HEIGHT = 810;
+
 	@Override
 	public void start(Stage stage) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("Main.fxml"));
-		Scene scene = new Scene(fxmlLoader.load(), 1100, 800);
+		Scene scene = new Scene(fxmlLoader.load(), WINDOW_WIDTH, WINDOW_HEIGHT);
 		stage.setTitle("Graph Path Finder");
 		stage.setScene(scene);
 		stage.show();

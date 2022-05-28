@@ -12,7 +12,7 @@ public class InfoLabel extends Label {
     public InfoLabel(String text, InfoLabelSource infoLabelSource, boolean isError) {
         super(text);
 
-        setLayoutX(75);
+        setLayoutX(45);
         setLayoutY(infoLabelSource.getLayoutY());
         this.isError = isError;
     }
