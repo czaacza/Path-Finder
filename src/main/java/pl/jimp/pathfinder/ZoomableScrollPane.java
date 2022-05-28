@@ -1,14 +1,16 @@
 package pl.jimp.pathfinder;
+
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class ZoomableScrollPane extends ScrollPane {
-	private double scaleValue = 1;
+	private double scaleValue = 0.99;
 	private double zoomIntensity = 0.1;
 	private Node target;
 	private Node zoomNode;
@@ -24,10 +26,10 @@ public class ZoomableScrollPane extends ScrollPane {
 		setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
 		setFitToHeight(true); //center
 		setFitToWidth(true); //center
-		setPrefWidth(1000);
-		setPrefHeight(750);
-		setLayoutX(420);
-		setLayoutY(167);
+		setPrefWidth(((Pane)target).getPrefWidth());
+		setPrefHeight(((Pane)target).getPrefHeight());
+		setLayoutX(target.getLayoutX());
+		setLayoutY(target.getLayoutY());
 
 		updateScale();
 	}

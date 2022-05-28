@@ -68,10 +68,6 @@ public class MainController {
 	@FXML
 	private Pane zoomPane;
 
-
-
-
-
 	public void submitGenerate(ActionEvent event) {
 		int numOfRows;
 		int numOfColumns;

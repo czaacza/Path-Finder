@@ -33,6 +33,7 @@ public class GraphDrawer {
 	private final static Color VERTEX_DEFAULT_COLOR = Color.VIOLET;
 	private final static Color VERTEX_VISITED_COLOR = Color.BLACK;
 	private final static Color VERTEX_SPLIT_COLOR = Color.BLUE;
+
 	public GraphDrawer(AnchorPane graphPane, AnchorPane edgePane, Graph graph, Label lblPathLength, AnchorPane mainPane, Label lblSplit) {
 		this.graphPane = graphPane;
 		this.edgePane = edgePane;
@@ -40,7 +41,7 @@ public class GraphDrawer {
 		this.lblPathLength = lblPathLength;
 		this.mainPane = mainPane;
 		this.lblSplit = lblSplit;
-		circleRadius = PANE_WIDTH * graph.getNumOfRows() > PANE_HEIGHT * graph.getNumOfColumns() ? PANE_HEIGHT / graph.getNumOfRows() / 4.0 : PANE_WIDTH / graph.getNumOfColumns() / 4.0;
+		circleRadius = PANE_WIDTH * graph.getNumOfRows() > PANE_HEIGHT * graph.getNumOfColumns() ? PANE_HEIGHT / graph.getNumOfRows() / 4.5 : PANE_WIDTH / graph.getNumOfColumns() / 4.5;
 		drawnVertices = new Circle[graph.getNumOfRows() * graph.getNumOfColumns()];
 		drawnEdges = new Line[graph.getNumOfColumns() * graph.getNumOfRows()][4];
 		edgesColors = new ArrayList<>();

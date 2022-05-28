@@ -8,117 +8,188 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jimp.pathfinder.MainController">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jimp.pathfinder.MainController">
    <children>
-      <VBox alignment="CENTER" layoutX="37.0" layoutY="98.0" prefHeight="652.0" prefWidth="221.0" spacing="20.0">
+      <VBox alignment="CENTER" layoutX="37.0" layoutY="86.0" prefHeight="685.0" prefWidth="221.0" spacing="30.0">
          <children>
-            <VBox alignment="CENTER" layoutY="40.0" prefHeight="259.0" prefWidth="221.0" spacing="15.0" style="-fx-border-color: #222; -fx-padding: 15; -fx-border-width: 2; -fx-border-radius: 12px;">
+            <VBox alignment="CENTER" layoutY="40.0" prefHeight="264.0" prefWidth="221.0" spacing="15.0" style="-fx-border-color: #222; -fx-padding: 15; -fx-border-width: 2; -fx-border-radius: 9; -fx-background-color: #ddd;">
                <children>
                   <VBox spacing="5.0">
                      <children>
                         <Pane prefHeight="34.0" prefWidth="206.0">
                            <children>
-                              <Label layoutY="-1.0" prefHeight="34.0" prefWidth="151.0" text="Number of rows" />
-                              <TextField fx:id="numOfRowsField" accessibleText="0123456789" layoutX="115.0" layoutY="2.0" prefHeight="30.0" prefWidth="73.0" />
+                              <Label layoutY="-1.0" prefHeight="34.0" prefWidth="111.0" text="Number of rows">
+                                 <font>
+                                    <Font name="Lato Regular" size="12.0" />
+                                 </font></Label>
+                              <TextField fx:id="numOfRowsField" accessibleText="0123456789" layoutX="115.0" layoutY="2.0" prefHeight="30.0" prefWidth="73.0">
+                                 <font>
+                                    <Font name="Lato Regular" size="12.0" />
+                                 </font></TextField>
                            </children>
                         </Pane>
                         <Pane prefHeight="35.0" prefWidth="200.0">
                            <children>
-                              <Label layoutY="-2.0" prefHeight="37.0" prefWidth="151.0" text="Number of columns" />
-                              <TextField fx:id="numOfColumnsField" layoutX="115.0" layoutY="3.0" prefHeight="30.0" prefWidth="73.0" />
+                              <Label layoutY="-2.0" prefHeight="37.0" prefWidth="111.0" text="Number of columns">
+                                 <font>
+                                    <Font name="Lato Regular" size="12.0" />
+                                 </font></Label>
+                              <TextField fx:id="numOfColumnsField" layoutX="115.0" layoutY="3.0" prefHeight="30.0" prefWidth="73.0">
+                                 <font>
+                                    <Font name="Lato Regular" size="12.0" />
+                                 </font></TextField>
                            </children>
                         </Pane>
                         <Pane>
                            <children>
-                              <Label prefHeight="34.0" prefWidth="151.0" text="Minimal weight" />
-                              <TextField fx:id="minWeightField" layoutX="115.0" layoutY="2.0" prefHeight="30.0" prefWidth="73.0" />
+                              <Label prefHeight="34.0" prefWidth="111.0" text="Minimal weight">
+                                 <font>
+                                    <Font name="Lato Regular" size="12.0" />
+                                 </font></Label>
+                              <TextField fx:id="minWeightField" layoutX="115.0" layoutY="2.0" prefHeight="30.0" prefWidth="73.0">
+                                 <font>
+                                    <Font name="Lato Regular" size="12.0" />
+                                 </font></TextField>
                            </children>
                         </Pane>
                         <Pane>
                            <children>
-                              <TextField fx:id="maxWeightField" layoutX="115.0" layoutY="4.0" prefHeight="30.0" prefWidth="73.0" />
-                              <Label layoutY="-2.0" prefHeight="37.0" prefWidth="151.0" text="Maximal weight" />
+                              <TextField fx:id="maxWeightField" layoutX="114.0" layoutY="3.0" prefHeight="30.0" prefWidth="73.0">
+                                 <font>
+                                    <Font name="Lato Regular" size="12.0" />
+                                 </font></TextField>
+                              <Label layoutY="-1.0" prefHeight="37.0" prefWidth="111.0" text="Maximal weight">
+                                 <font>
+                                    <Font name="Lato Regular" size="12.0" />
+                                 </font></Label>
                            </children>
                         </Pane>
                         <Pane>
                            <children>
-                              <Label prefHeight="34.0" prefWidth="151.0" text="\% for no connection" />
-                              <TextField fx:id="chanceField" layoutX="115.0" layoutY="2.0" prefHeight="30.0" prefWidth="73.0" />
+                              <Label prefHeight="34.0" prefWidth="111.0" text="\% for no connection">
+                                 <font>
+                                    <Font name="Lato Regular" size="12.0" />
+                                 </font></Label>
+                              <TextField fx:id="chanceField" layoutX="115.0" layoutY="2.0" prefHeight="30.0" prefWidth="73.0">
+                                 <font>
+                                    <Font name="Lato Regular" size="12.0" />
+                                 </font></TextField>
                            </children>
                         </Pane>
                      </children>
                   </VBox>
-                  <Button fx:id="generateButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#submitGenerate" prefHeight="41.0" prefWidth="211.0" text="GENERATE GRAPH" textOverrun="CLIP" />
+                  <Button fx:id="generateButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#submitGenerate" prefHeight="50.0" prefWidth="187.0" style="-fx-background-color: #444;" text="GENERATE GRAPH" textFill="WHITE" textOverrun="CLIP">
+                     <font>
+                        <Font name="Lato Regular" size="12.0" />
+                     </font></Button>
                </children>
             </VBox>
-            <VBox prefHeight="241.0" prefWidth="221.0" spacing="20.0">
+            <VBox prefHeight="241.0" prefWidth="221.0" spacing="30.0">
                <children>
-                  <VBox prefHeight="112.0" prefWidth="221.0" spacing="5.0" style="-fx-border-color: #333; -fx-border-width: 2; -fx-padding: 15; -fx-border-radius: 12;">
+                  <VBox prefHeight="112.0" prefWidth="221.0" spacing="5.0" style="-fx-border-color: #333; -fx-border-width: 2; -fx-padding: 15; -fx-border-radius: 9; -fx-background-color: #ddd;">
                      <children>
                         <Pane prefHeight="46.0" prefWidth="225.0">
                            <children>
-                              <TextField fx:id="inputLoadPathField" layoutX="84.0" layoutY="5.0" prefHeight="30.0" prefWidth="100.0" />
-                              <Label layoutY="5.0" prefHeight="30.0" prefWidth="82.0" text="Input path" />
+                              <TextField fx:id="inputLoadPathField" layoutX="84.0" layoutY="5.0" prefHeight="30.0" prefWidth="100.0">
+                                 <font>
+                                    <Font name="Lato Regular" size="12.0" />
+                                 </font></TextField>
+                              <Label layoutY="5.0" prefHeight="30.0" prefWidth="82.0" text="Input path">
+                                 <font>
+                                    <Font name="Lato Regular" size="12.0" />
+                                 </font></Label>
                            </children>
                         </Pane>
-                        <Button fx:id="loadButton" mnemonicParsing="false" onAction="#submitLoad" prefHeight="35.0" prefWidth="221.0" text="LOAD GRAPH" />
+                        <Button fx:id="loadButton" mnemonicParsing="false" onAction="#submitLoad" prefHeight="35.0" prefWidth="187.0" style="-fx-background-color: #444;" text="LOAD GRAPH" textFill="WHITE">
+                           <font>
+                              <Font name="Lato Regular" size="12.0" />
+                           </font></Button>
                      </children>
                   </VBox>
-                  <VBox prefHeight="109.0" prefWidth="221.0" spacing="15.0" style="-fx-border-color: #333; -fx-border-width: 2; -fx-border-radius: 12; -fx-padding: 15;">
+                  <VBox prefHeight="109.0" prefWidth="221.0" spacing="15.0" style="-fx-border-color: #333; -fx-border-width: 2; -fx-border-radius: 9; -fx-padding: 15; -fx-background-color: #ddd;">
                      <children>
                         <Pane prefHeight="30.0" prefWidth="225.0">
                            <children>
-                              <Label layoutY="-1.0" prefHeight="30.0" prefWidth="82.0" text="Output path" />
-                              <TextField fx:id="outputSavePathField" layoutX="86.0" layoutY="1.0" prefHeight="30.0" prefWidth="100.0" />
+                              <Label layoutY="-1.0" prefHeight="30.0" prefWidth="82.0" text="Output path">
+                                 <font>
+                                    <Font name="Lato Regular" size="12.0" />
+                                 </font></Label>
+                              <TextField fx:id="outputSavePathField" layoutX="86.0" layoutY="1.0" prefHeight="30.0" prefWidth="100.0">
+                                 <font>
+                                    <Font name="Lato Regular" size="12.0" />
+                                 </font></TextField>
                            </children>
                         </Pane>
-                        <Button fx:id="saveButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#submitSave" prefHeight="35.0" prefWidth="221.0" text="SAVE GRAPH" />
+                        <Button fx:id="saveButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#submitSave" prefHeight="35.0" prefWidth="221.0" style="-fx-background-color: #444;" text="SAVE GRAPH" textFill="WHITE">
+                           <font>
+                              <Font name="Lato Regular" size="12.0" />
+                           </font></Button>
                      </children>
                   </VBox>
                </children>
             </VBox>
-            <VBox prefHeight="115.0" prefWidth="221.0" spacing="10.0" style="-fx-padding: 15; -fx-border-color: #333; -fx-border-width: 2; -fx-border-radius: 12;">
+            <VBox prefHeight="115.0" prefWidth="221.0" spacing="10.0" style="-fx-padding: 15; -fx-border-color: #333; -fx-border-width: 2; -fx-border-radius: 9; -fx-background-color: #ddd;">
                <children>
                   <VBox>
                      <children>
                         <Pane prefHeight="40.0" prefWidth="187.0">
                            <children>
-                              <Label layoutY="-3.0" prefHeight="46.0" prefWidth="73.0" text="Split mode:" />
-                              <Label fx:id="lblSplit" layoutX="114.0" layoutY="-3.0" prefHeight="46.0" prefWidth="73.0" text="OFF" textFill="RED">
+                              <Label layoutY="-3.0" prefHeight="46.0" prefWidth="73.0" text="Split mode:">
                                  <font>
-                                    <Font name="System Bold" size="12.0" />
+                                    <Font name="Lato Regular" size="12.0" />
+                                 </font></Label>
+                              <Label fx:id="lblSplit" layoutX="141.0" prefHeight="38.0" prefWidth="32.0" text="OFF" textFill="RED">
+                                 <font>
+                                    <Font name="Lato Italic" size="12.0" />
                                  </font>
                               </Label>
                            </children>
                         </Pane>
                      </children>
                   </VBox>
-                  <Button fx:id="splitButton" mnemonicParsing="false" onAction="#submitSplit" prefHeight="35.0" prefWidth="250.0" text="SPLIT GRAPH" />
+                  <Button fx:id="splitButton" mnemonicParsing="false" onAction="#submitSplit" prefHeight="35.0" prefWidth="250.0" style="-fx-background-color: #444;" text="SPLIT GRAPH" textFill="WHITE">
+                     <font>
+                        <Font name="Lato Regular" size="12.0" />
+                     </font></Button>
                </children>
             </VBox>
          </children>
       </VBox>
-      <Pane layoutX="699.0" layoutY="20.0" prefHeight="63.0" prefWidth="328.0" style="-fx-border-color: #333; -fx-border-width: 2; -fx-border-radius: 12; -fx-padding: 15;">
+      <Pane layoutX="386.0" layoutY="31.0" prefHeight="41.0" prefWidth="255.0" style="-fx-border-radius: 9; -fx-background-radius: 9; -fx-padding: 15; -fx-background-color: #999;">
          <children>
-            <Label layoutX="14.0" layoutY="11.0" prefHeight="41.0" prefWidth="190.0" text="Length of the last path:" />
-            <Label fx:id="lblPathLength" layoutX="164.0" layoutY="11.0" prefHeight="41.0" prefWidth="158.0">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" prefHeight="41.0" prefWidth="100.0" text="length:" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Lato Regular" size="18.0" />
+               </font></Label>
+            <Label fx:id="lblPathLength" alignment="CENTER" layoutX="96.0" prefHeight="41.0" prefWidth="158.0" style="-fx-background-color: #444; -fx-background-radius: 5;" textFill="WHITE">
+               <font>
+                  <Font name="Lato Regular" size="12.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="342.0" layoutY="20.0" prefHeight="63.0" prefWidth="328.0" style="-fx-border-color: #333; -fx-border-width: 2; -fx-border-radius: 12; -fx-padding: 15;">
+      <Pane layoutX="728.0" layoutY="20.0" prefHeight="63.0" prefWidth="328.0" style="-fx-border-width: 2; -fx-border-radius: 9; -fx-padding: 15;">
          <children>
-            <Button fx:id="bfsButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#submitBfs" prefHeight="37.0" prefWidth="151.0" text="CHECK CONNECTION" />
-            <Label fx:id="lblBfs" alignment="CENTER" layoutX="165.0" layoutY="12.0" prefHeight="41.0" prefWidth="151.0" />
+            <Button fx:id="bfsButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#submitBfs" prefHeight="37.0" prefWidth="151.0" style="-fx-background-color: #444;" text="CHECK CONNECTION" textFill="WHITE">
+               <font>
+                  <Font name="Lato Regular" size="12.0" />
+               </font></Button>
+            <Label fx:id="lblBfs" alignment="CENTER" layoutX="171.0" layoutY="11.0" prefHeight="41.0" prefWidth="151.0">
+               <font>
+                  <Font name="Lato Regular" size="12.0" />
+               </font></Label>
          </children>
       </Pane>
-      <Pane fx:id="zoomPane" layoutX="286.0" layoutY="98.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="663.0" prefWidth="768.0">
+      <Pane fx:id="zoomPane" layoutX="286.0" layoutY="98.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="660.0" prefWidth="770.0">
          <children>
-            <AnchorPane fx:id="edgePane" prefHeight="663.0" prefWidth="768.0" />
-            <AnchorPane fx:id="graphPane" prefHeight="663.0" prefWidth="768.0" />
+            <AnchorPane fx:id="edgePane" prefHeight="660.0" prefWidth="770.0" />
+            <AnchorPane fx:id="graphPane" prefHeight="660.0" prefWidth="770.0" />
          </children>
       </Pane>
+      <Label alignment="CENTER" layoutX="37.0" layoutY="14.0" prefHeight="63.0" prefWidth="297.0" text="Graph Path Finder">
+         <font>
+            <Font name="Open Sans Light" size="22.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
