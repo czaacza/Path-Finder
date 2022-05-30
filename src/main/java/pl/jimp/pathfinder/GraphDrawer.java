@@ -86,7 +86,7 @@ public class GraphDrawer {
 					path = search.dijkstra();
 					if(!graph.getSplitMode()) {
 						if (search.getDistance() == Double.MAX_VALUE) {
-							lblPathLength.setText("no connection between given vertices");
+							lblPathLength.setText("no connection");
 							search = null;
 							return;
 						}
@@ -104,10 +104,10 @@ public class GraphDrawer {
 							graphSplitter.splitGraph();
 							this.graph = graphSplitter.getGraph();
 							drawGraph();
-							graph.setSplitMode(false);
-							lblSplit.setText("OFF");
-							lblSplit.setTextFill(Color.RED);
 						}
+						lblSplit.setText("OFF");
+						lblSplit.setTextFill(Color.RED);
+						graph.setSplitMode(false);
 						path = null;
 					}
 					search = null;

@@ -78,7 +78,6 @@ public class Search {
 			count++;
 		}
 
-		System.out.println("distance = " + distance[endVertex]);
 		this.distance = distance[endVertex];
 		int numOfElements = 0;
 		List<Integer> path = new ArrayList<>();
@@ -89,11 +88,6 @@ public class Search {
 			numOfElements++;
 		} while (path.get(numOfElements) != startVertex);
 		Collections.reverse(path);
-		for (int i = 0; i < numOfElements; i++) {
-			System.out.print(path.get(i) + "->");
-		}
-		System.out.print(path.get(numOfElements));
-		System.out.println();
 		return path;
 	}
 }

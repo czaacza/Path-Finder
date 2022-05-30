@@ -99,15 +99,14 @@ public class MainController {
 	}
 
 	public void submitBfs(ActionEvent event) {
-		Bfs bfs = new Bfs(graph);
-		if (graph == null) {
-			lblBfs.setText("Graph is not loaded");
-			return;
-		}
-		if (bfs.checkIfConnected()) {
-			lblBfs.setText("Graph is connected");
-		} else {
-			lblBfs.setText("Graph is not connected");
+		if (graph != null) {
+			Bfs bfs = new Bfs(graph);
+			if (bfs.checkIfConnected()) {
+				lblBfs.setText("Graph is connected");
+			} else {
+				lblBfs.setText("Graph is not connected");
+			}
+			bfsButton.setDisable(true);
 		}
 	}
 
@@ -147,18 +146,11 @@ public class MainController {
 		}
 		lblSplit.setText("OFF");
 		lblSplit.setTextFill(Color.RED);
-		/*
-		InfoLabel splitInfo = graphSplitter.splitGraph();
-		if(splitInfo != null && splitInfo.isError()) {
-			splitInfo.showInfoLabel();
-			return;
-		}
-		graph = graphSplitter.getGraph();
-		manageGraph();
-		graph.setSplitMode(false);*/
 	}
 
 	public void manageGraph() {
+		bfsButton.setDisable(false);
+		lblBfs.setText("");
 		ZoomableScrollPane zoomableScrollPane = new ZoomableScrollPane(zoomPane);
 		mainPane.getChildren().add(zoomableScrollPane);
 		graphDrawer = new GraphDrawer(graphPane, edgePane, graph, lblPathLength, mainPane, lblSplit);

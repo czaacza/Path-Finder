@@ -10,7 +10,7 @@ import java.io.IOException;
 public class MainApplication extends Application {
 
 	private static final int WINDOW_WIDTH = 1100;
-	private static final int WINDOW_HEIGHT = 810;
+	private static final int WINDOW_HEIGHT = 830;
 
 	@Override
 	public void start(Stage stage) throws IOException {
@@ -18,11 +18,11 @@ public class MainApplication extends Application {
 		Scene scene = new Scene(fxmlLoader.load(), WINDOW_WIDTH, WINDOW_HEIGHT);
 		stage.setTitle("Graph Path Finder");
 		stage.setScene(scene);
+		stage.setResizable(false);
 		stage.show();
 	}
 
 	public static void main(String[] args) throws Exception {
-
 		GraphLoader graphLoader = new GraphLoader("src/main/resources/pl/jimp/pathfinder/data/mygraph");
 		graphLoader.loadGraph();
 		Graph graph = graphLoader.getGraph();

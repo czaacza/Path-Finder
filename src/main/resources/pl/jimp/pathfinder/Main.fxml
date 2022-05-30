@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -8,9 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jimp.pathfinder.MainController">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jimp.pathfinder.MainController">
    <children>
-      <VBox alignment="CENTER" layoutX="37.0" layoutY="86.0" prefHeight="685.0" prefWidth="221.0" spacing="30.0">
+      <VBox alignment="CENTER" layoutX="40.0" layoutY="98.0" prefHeight="685.0" prefWidth="221.0" spacing="30.0">
          <children>
             <VBox alignment="CENTER" layoutY="40.0" prefHeight="264.0" prefWidth="221.0" spacing="15.0" style="-fx-border-color: #222; -fx-padding: 15; -fx-border-width: 2; -fx-border-radius: 9; -fx-background-color: #ddd;">
                <children>
@@ -81,7 +82,10 @@
                   <Button fx:id="generateButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#submitGenerate" prefHeight="50.0" prefWidth="187.0" style="-fx-background-color: #444;" text="GENERATE GRAPH" textFill="WHITE" textOverrun="CLIP">
                      <font>
                         <Font name="Lato Regular" size="12.0" />
-                     </font></Button>
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                </children>
             </VBox>
             <VBox prefHeight="241.0" prefWidth="221.0" spacing="30.0">
@@ -103,7 +107,10 @@
                         <Button fx:id="loadButton" mnemonicParsing="false" onAction="#submitLoad" prefHeight="35.0" prefWidth="187.0" style="-fx-background-color: #444;" text="LOAD GRAPH" textFill="WHITE">
                            <font>
                               <Font name="Lato Regular" size="12.0" />
-                           </font></Button>
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                      </children>
                   </VBox>
                   <VBox prefHeight="109.0" prefWidth="221.0" spacing="15.0" style="-fx-border-color: #333; -fx-border-width: 2; -fx-border-radius: 9; -fx-padding: 15; -fx-background-color: #ddd;">
@@ -123,7 +130,10 @@
                         <Button fx:id="saveButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#submitSave" prefHeight="35.0" prefWidth="221.0" style="-fx-background-color: #444;" text="SAVE GRAPH" textFill="WHITE">
                            <font>
                               <Font name="Lato Regular" size="12.0" />
-                           </font></Button>
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                      </children>
                   </VBox>
                </children>
@@ -150,12 +160,15 @@
                   <Button fx:id="splitButton" mnemonicParsing="false" onAction="#submitSplit" prefHeight="35.0" prefWidth="250.0" style="-fx-background-color: #444;" text="SPLIT GRAPH" textFill="WHITE">
                      <font>
                         <Font name="Lato Regular" size="12.0" />
-                     </font></Button>
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                </children>
             </VBox>
          </children>
       </VBox>
-      <Pane layoutX="386.0" layoutY="31.0" prefHeight="41.0" prefWidth="255.0" style="-fx-border-radius: 9; -fx-background-radius: 9; -fx-padding: 15; -fx-background-color: #999;">
+      <Pane layoutX="416.0" layoutY="30.0" prefHeight="41.0" prefWidth="255.0" style="-fx-border-radius: 9; -fx-background-radius: 9; -fx-padding: 15; -fx-background-color: #999;">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" prefHeight="41.0" prefWidth="100.0" text="length:" textFill="WHITE">
                <font>
@@ -168,25 +181,28 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="728.0" layoutY="20.0" prefHeight="63.0" prefWidth="328.0" style="-fx-border-width: 2; -fx-border-radius: 9; -fx-padding: 15;">
+      <Pane layoutX="726.0" layoutY="30.0" prefHeight="41.0" prefWidth="316.0" style="-fx-border-width: 2; -fx-border-radius: 9; -fx-padding: 15;">
          <children>
-            <Button fx:id="bfsButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#submitBfs" prefHeight="37.0" prefWidth="151.0" style="-fx-background-color: #444;" text="CHECK CONNECTION" textFill="WHITE">
+            <Button fx:id="bfsButton" disable="true" layoutY="2.0" mnemonicParsing="false" onAction="#submitBfs" prefHeight="37.0" prefWidth="151.0" style="-fx-background-color: #444;" text="CHECK CONNECTION" textFill="WHITE">
                <font>
                   <Font name="Lato Regular" size="12.0" />
-               </font></Button>
-            <Label fx:id="lblBfs" alignment="CENTER" layoutX="171.0" layoutY="11.0" prefHeight="41.0" prefWidth="151.0">
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Label fx:id="lblBfs" alignment="CENTER" layoutX="158.0" prefHeight="41.0" prefWidth="151.0">
                <font>
                   <Font name="Lato Regular" size="12.0" />
                </font></Label>
          </children>
       </Pane>
-      <Pane fx:id="zoomPane" layoutX="286.0" layoutY="98.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="660.0" prefWidth="770.0">
+      <Pane fx:id="zoomPane" layoutX="286.0" layoutY="102.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="677.0" prefWidth="760.0">
          <children>
-            <AnchorPane fx:id="edgePane" prefHeight="660.0" prefWidth="770.0" />
-            <AnchorPane fx:id="graphPane" prefHeight="660.0" prefWidth="770.0" />
+            <AnchorPane fx:id="edgePane" prefHeight="677.0" prefWidth="760.0" />
+            <AnchorPane fx:id="graphPane" prefHeight="677.0" prefWidth="760.0" />
          </children>
       </Pane>
-      <Label alignment="CENTER" layoutX="37.0" layoutY="14.0" prefHeight="63.0" prefWidth="297.0" text="Graph Path Finder">
+      <Label alignment="CENTER" layoutX="40.0" layoutY="20.0" prefHeight="63.0" prefWidth="221.0" text="Graph Path Finder">
          <font>
             <Font name="Open Sans Light" size="22.0" />
          </font>
