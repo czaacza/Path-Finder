@@ -207,5 +207,6 @@
             <Font name="Open Sans Light" size="22.0" />
          </font>
       </Label>
+      <Button layoutX="260.0" layoutY="6503.0" mnemonicParsing="false" text="Button" />
    </children>
 </AnchorPane>

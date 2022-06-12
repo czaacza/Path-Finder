@@ -23,11 +23,6 @@ public class MainApplication extends Application {
 	}
 
 	public static void main(String[] args) throws Exception {
-		GraphLoader graphLoader = new GraphLoader("src/main/resources/pl/jimp/pathfinder/data/mygraph");
-		graphLoader.loadGraph();
-		Graph graph = graphLoader.getGraph();
-		GraphSaver graphSaver = new GraphSaver(graph, "src/main/resources/pl/jimp/pathfinder/data/example");
-		graphSaver.saveGraph();
 		launch();
 	}
 }

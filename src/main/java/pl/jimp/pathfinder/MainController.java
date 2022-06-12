@@ -81,7 +81,7 @@ public class MainController {
 			maxWeight = Double.parseDouble(maxWeightField.getText());
 			chance = Double.parseDouble(chanceField.getText());
 		} catch (NumberFormatException e) {
-			InfoLabel argumentsInfo = new InfoLabel("wrong format of argument(s)", InfoLabelSource.GENERATE, true);
+			InfoLabel argumentsInfo = new InfoLabel("Wrong format of argument(s)", InfoLabelSource.GENERATE, true);
 			mainPane.getChildren().add(argumentsInfo);
 			argumentsInfo.showInfoLabel();
 			return;
