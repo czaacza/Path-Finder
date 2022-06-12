@@ -5,9 +5,12 @@ javaFX GUI application using Dijkstra algorithm to find the shortest path betwee
 
 ## Usage
 #### PL
-Przed zbudowaniem aplikacji w środowisku obsługującym pliki .java należy ustawić ścieżkę Resources Root na folder src/main/resources.
-Dzięki temu importując lub zapisując graf do pliku wystarczy wpisać nazwę pliku znajdującego się w folderze  src/main/resources/data, a nie całą ścieżkę do pliku.
+Aby otworzyć aplikację należy zainstalować i wdrożyć do środowiska bibliotekę **javaFX**, wersja 18.
 
-#### END
-Before building your application in IDE envoirnment, you need to mark src/main/resources directory as a Resources Root.
-Therefore, you can put a name of the file located in src/main/resources/data folder instead of putting the absolute file path.
+Przed zbudowaniem aplikacji w środowisku obsługującym pliki .java należy:
+- ustawić ścieżkę **Resources Root** na folder **src/main/resources**
+- ustawić ścieżkę **Sources Root** na folder **src/main/java**
+- usunąć wszystkie inne ścieżki Sources i Resources Root
+
+Dzięki temu program zostanie zbudowany poprawnie, a importując lub zapisując graf do pliku wystarczy wpisać nazwę pliku znajdującego się w folderze  src/main/resources/data, a nie całą ścieżkę do pliku.
+
