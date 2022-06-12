@@ -14,3 +14,4 @@ Przed zbudowaniem aplikacji w środowisku obsługującym pliki .java należy:
 
 Dzięki temu program zostanie zbudowany poprawnie, a importując lub zapisując graf do pliku wystarczy wpisać nazwę pliku znajdującego się w folderze  src/main/resources/data, a nie całą ścieżkę do pliku.
 
+Zalecane środowisko uruchomieniowe to **Intellij Idea** - Dla łatwego uruchomienia programu zaleca się stworzenie nowego projektu JavaFX i zamiana oryginalnego folderu src na folder src z repozytorium.
