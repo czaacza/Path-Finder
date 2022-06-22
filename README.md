@@ -1,7 +1,7 @@
 # Path-Finder
 JavaFX GUI application using Dijkstra and BFS algorithms to find the shortest path between two given vertices, and tell whether the given graph is connected or not.
 
-## Sample screen
+## Sample screenshot
 <img src="https://github.com/czaacza/Path-Finder/blob/master/img/mainImg.PNG" width="815" height="600"/>
 
 ## Purpose
