@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"m":"pl.jimp.pathfinder","l":"pl.jimp.pathfinder"}];updateSearchResults();
