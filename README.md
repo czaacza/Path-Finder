@@ -1,9 +1,6 @@
 # Path-Finder
 JavaFX GUI application using Dijkstra and BFS algorithms to find the shortest path between two given vertices, and tell whether the given graph is connected or not.
 
-## Sample screenshot
-<img src="https://github.com/czaacza/Path-Finder/blob/master/img/mainImg.PNG" width="600" />
-
 ## Purpose
 
 ### ENG
@@ -21,6 +18,10 @@ Program może być wykorzystany by:
 - Podzielić graf na mniejsze części poprzez wybranie wierzchołków znajdujących się na krawędziach
 - Znaleźć najkrótszą możliwą drogę pomiędzy dwoma wybranymi wierzchołkami (Algorytm Dijkstry)
 - Sprawdzić, czy załadowany graf jest spójny (Algorytm BFS)
+
+
+## Sample screenshot
+<img src="https://github.com/czaacza/Path-Finder/blob/master/img/mainImg.PNG" width="600" />
 
 ## Usage
 ### ENG
